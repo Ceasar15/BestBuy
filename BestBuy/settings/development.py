@@ -3,8 +3,8 @@ Development Settings and Globals
 """
 
 
-from os import join, normpath, environ
-from base import *
+from os import environ
+from .base import *
 
 
 ########## DEBUG CONFIGURATION
@@ -27,9 +27,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': normpath(join(DJANGO_ROOT, 'db.sqlite3')),
+        'NAME': os.path.normpath(os.path.join(DJANGO_ROOT, 'db.sqlite3')),
     }
 }
+
+##### SOUTH DATABASE
+# SOUTH_DATABASE_ADAPTERS = {
+#     'default': 'south.db.sqlite3'
+# }
+
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
