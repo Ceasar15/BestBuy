@@ -8,6 +8,9 @@ django = "*"
 south = "*"
 django-compressor = "*"
 django-celery = "*"
+whitenoise = "*"
+django-heroku-postgresify = "*"
+django-heroku-memcacheify = "*"
 
 [dev-packages]
 

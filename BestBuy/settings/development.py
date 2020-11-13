@@ -11,6 +11,9 @@ from .base import *
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = True
 
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
 ########## END DEBUG CONFIGURATION
@@ -19,6 +22,7 @@ TEMPLATE_DEBUG = DEBUG
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_TIMEOUT = 5
 ########## END EMAIL CONFIGURATION
 
 # Database
@@ -46,7 +50,8 @@ CACHES = {
 }
 ########## END CACHE CONFIGURATION
 
+MEMCACHEIFY_USE_LOCAL=True
 
-
-
+# https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#internal-ips
+INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
 

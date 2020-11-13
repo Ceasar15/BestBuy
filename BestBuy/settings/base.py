@@ -23,6 +23,7 @@ SITE_ROOT = dirname(DJANGO_ROOT)
 # Site name:
 SITE_NAME = basename(DJANGO_ROOT)
 
+SITE_ID = 1
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
 path.append(DJANGO_ROOT)
@@ -113,34 +114,38 @@ FIXTURE_DIRS = (
 
 
 ########## TEMPLATE CONFIGURATION
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates',],
+        # 'DIRS': ['templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.csrf',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-)
+# # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     'django.contrib.auth.context_processors.auth',
+#     'django.core.context_processors.debug',
+#     'django.core.context_processors.i18n',
+#     'django.core.context_processors.media',
+#     'django.core.context_processors.static',
+#     'django.core.context_processors.tz',
+#     'django.contrib.messages.context_processors.messages',
+#     'django.core.context_processors.request',
+# )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
 TEMPLATE_LOADERS = (
@@ -162,11 +167,16 @@ MIDDLEWARE = (
     'django.middleware.gzip.GZipMiddleware',
 
     # Default Django middleware.
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "django.middleware.common.BrokenLinkEmailsMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 ########## END MIDDLEWARE CONFIGURATION
 
