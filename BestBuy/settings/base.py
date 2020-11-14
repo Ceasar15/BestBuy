@@ -92,7 +92,7 @@ STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    normpath(join(DJANGO_ROOT, 'assets')),
+    normpath(join(DJANGO_ROOT, 'staticfiles')),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -117,7 +117,7 @@ FIXTURE_DIRS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': ['templates',],
+         'DIRS': ['templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,9 +154,9 @@ TEMPLATE_LOADERS = (
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
-TEMPLATE_DIRS = (
-    normpath(join(DJANGO_ROOT, 'templates')),
-)
+# TEMPLATE_DIRS = (
+#     normpath(join(DJANGO_ROOT, 'templates')),
+# )
 ########## END TEMPLATE CONFIGURATION
 
 
@@ -216,8 +216,8 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    'users,',
-    'products',
+    'apps.users',
+    'apps.products',
     
 )
 
