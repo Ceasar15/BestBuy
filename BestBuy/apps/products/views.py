@@ -6,12 +6,9 @@ from django.views.generic.list import ListView
 
 
 def home(request):
-    template = 'products/home.html'
+    template = 'home.html'
     return render(request, template)
 
-
-
-class CategoryListView(ListView):
-    template_name = 'products/home.html'
-
-
+def contact(request):
+    template = 'contact.html'
+    return render(request, template)
