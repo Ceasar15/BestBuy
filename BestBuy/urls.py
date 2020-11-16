@@ -23,9 +23,13 @@ from apps.products import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('products/',include('apps.products.urls')),
+    url('users/', include('apps.users.urls')),
     path('', views.home, name='home' ),
     path('contact/', views.contact, name='contact'),
     path('faq/', views.faq, name='faq')
+
+
+
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
