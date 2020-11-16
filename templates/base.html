@@ -37,21 +37,78 @@
       <ul>
         <li><a class="active" href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
+        <li><a href="#">Categories</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
-                <div class="search-container">
-    <form action="#">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+        {% if user.is_authenticated %}
+        <li><a href="#">Dash</a></li>
+        {% else %}
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Sign Up</a></li>
+        {% endif %}
+        <div class="search-container">
+          <form action="#">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
       </ul>
     </nav>
 
-{% block body%}{% endblock body%}
+     {% block body%}{% endblock body%}
 
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">BestShop.com <i>The Best Online Shop </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+          </div>
 
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="#">Phones</a></li>
+              <li><a href="#">Clothes</a></li>
+              <li><a href="#">Furniture</a></li>
+              <li><a href="#">Gadgets</a></li>
+              <li><a href="#">Men Accessories</a></li>
+              <li><a href="#">Women Accessories </a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Wish List</a></li>
+              <li><a href="#">Cart</a></li>
+              <li><a href="#">Payment</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a class="fa fa-camera" href="#"> Ceasar </a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
 
 </body>
 <script src="{% static 'js/main.js' %}"></script>
