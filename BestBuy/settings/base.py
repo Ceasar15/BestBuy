@@ -33,6 +33,46 @@ path.append(DJANGO_ROOT)
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = False
 
+########## APP CONFIGURATION
+DJANGO_APPS = (
+    # Default Django apps:
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Useful template tags:
+    'django.contrib.humanize',
+
+    # Admin panel and documentation:
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+)
+
+THIRD_PARTY_APPS = (
+    # Database migration helpers:
+    #'south',
+
+    # Static file management:
+    'compressor',
+
+    # Asynchronous task queue:
+    'djcelery',
+)
+
+LOCAL_APPS = (
+    'apps.users',
+    'apps.products',
+    
+)
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+########## END APP CONFIGURATION
+
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
 ########## END DEBUG CONFIGURATION
@@ -46,6 +86,9 @@ ADMINS = (
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 ########## END MANAGER CONFIGURATION
+
+## USER CONFIGURATION
+AUTH_USER_MODEL = 'users.CustomUser'
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -186,44 +229,6 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 ########## END URL CONFIGURATION
 
 
-########## APP CONFIGURATION
-DJANGO_APPS = (
-    # Default Django apps:
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    # Useful template tags:
-    'django.contrib.humanize',
-
-    # Admin panel and documentation:
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-)
-
-THIRD_PARTY_APPS = (
-    # Database migration helpers:
-    #'south',
-
-    # Static file management:
-    'compressor',
-
-    # Asynchronous task queue:
-    'djcelery',
-)
-
-LOCAL_APPS = (
-    'apps.users',
-    'apps.products',
-    
-)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-########## END APP CONFIGURATION
 
 
 ########## LOGGING CONFIGURATION

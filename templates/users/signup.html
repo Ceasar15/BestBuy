@@ -13,11 +13,12 @@
           <h1 class="align-center">New Customer</h1>
           <br>
 
-          <form class="join" action="index.php" method="post">
+          <form class="join" action="#" method="post">
+          {% csrf_token %}
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-12">
-                  <input type="text" name="name" value="" placeholder="First Name" required="" class="form-control" /><br>
+                  <input type="text" name="first_name" value="" placeholder="First Name" required="" class="form-control" /><br>
                 </div>
                 <div class="col-sm-12">
                   <input type="text" name="phone" value="" placeholder="Phone" required="" class="form-control" /><br>
@@ -26,10 +27,10 @@
                   <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" /><br>
                 </div>
                 <div class="col-sm-12">
-                  <input type="password" name="password" value="" placeholder="Password" required="" class="form-control" /><br>
+                  <input type="password" name="password1" value="" placeholder="Password" required="" class="form-control" /><br>
                 </div>
                 <div class="col-sm-12">
-                  <input type="password" name="password-confirm" value="" placeholder="Confirm Password" required="" class="form-control" /><br>
+                  <input type="password" name="password2" value="" placeholder="Confirm Password" required="" class="form-control" /><br>
                 </div>
               </div>
             </div>
