@@ -9,3 +9,7 @@ def sign_up(request):
     template = 'users/signup.html'
     return render(request, template )
 
+def login(request):
+    template = 'users/login.html'
+    return render(request, template)
+
