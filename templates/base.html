@@ -65,8 +65,14 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'login' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
+              <li><a href="{% url 'login' %}"> <i class="icon ion-heart"></i> WishList </a></li>
+              <li><a href="{% url 'logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
+              {% else %}
               <li><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
               <li><a href="{% url 'sign_up' %}"> Sign Up</a></li>
+              {% endif %}
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -268,8 +274,8 @@
                   <h4 class="modal-title">Forgot Your Password?</h4>
                   <br>
 
-                  <form class="join" action="index.php" method="post">
-                    <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+                  <form class="join" method="post">
+                    <input type="email" name="username" value="" placeholder="E-mail" required="" class="form-control" />
                     <br>
 
                     <button type="submit" class="btn btn-primary btn-sm">Continue</button>

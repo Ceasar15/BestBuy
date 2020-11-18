@@ -13,9 +13,9 @@
           <h1 class="align-center">Returning Customer</h1>
           <br>
 
-          <form class="signin" action="" method="post">
+          <form class="signin" method="post">
           {% csrf_token %}
-            <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+            <input type="email" name="username" value="" placeholder="E-mail" required="" class="form-control" />
             <br>
             <input type="password" name="password" value="" placeholder="Password" required="" class="form-control" />
             <br>
@@ -35,7 +35,8 @@
             <p>
               Don't have an account? Create one now! <a href="{% url 'sign_up' %}"> Registration > </a>
             </p>
-
+{% comment %} {{form.as_p}}
+<button type="submit">Log In</button> {% endcomment %}
           </form>
         </div>
       </div>
