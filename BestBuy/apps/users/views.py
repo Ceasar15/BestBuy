@@ -4,14 +4,14 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth import logout
 
-from .forms import SignUpForm
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 
 def sign_up(request):
     if request.method == 'POST':
         print(request.POST)
-        form = SignUpForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save(commit=False)
             new_user.save()
