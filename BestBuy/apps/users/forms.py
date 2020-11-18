@@ -17,14 +17,14 @@ class SignUpForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
-        results = settings.AUTH_USER_MODEL.objects.filter(email=email)
+        results = CustomUser.objects.filter(email=email)
         if results.count():
             raise ValidationError("Email already existsssssssss")
         return email
 
     def save(self, commit= False):
-
-        user_default = settings.AUTH_USER_MODEL.objects.create_user(
+        user = super().save(commit=False)
+        user = CustomUser.objects.create_user(
             self.cleaned_data['email'],
             phone = self.cleaned_data['phone'],
             first_name = self.cleaned_data['first_name'],
@@ -32,6 +32,6 @@ class SignUpForm(UserCreationForm):
         )
 
         
-        return user_default
+        return user
 
 

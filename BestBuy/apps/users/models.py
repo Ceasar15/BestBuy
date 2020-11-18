@@ -9,7 +9,7 @@ from django.dispatch import receiver
 # Create your models here.
 
 class CustomUser(AbstractUser):
-    email = models.EmailField(max_length=50, unique=True, null=True)
+    email = models.EmailField(max_length=50, null=True)
     phone = models.CharField(max_length=15, null=True)
     first_name = models.CharField(max_length=100, null=True)
     
