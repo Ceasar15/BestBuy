@@ -10,12 +10,13 @@ from .forms import SignUpForm
 
 def sign_up(request):
     if request.method == 'POST':
+        print(request.POST)
         form = SignUpForm(request.POST)
         if form.is_valid():
             new_user = form.save(commit=False)
             new_user.save()
             
-            return render(request, 'home.html')
+            return render(request, 'registration/login.html')
         
         else:
             context = {
@@ -28,10 +29,6 @@ def sign_up(request):
             'form': SignUpForm
             }
     return render(request, template, context)
-
-def login(request):
-    template = 'users/login.html'
-    return render(request, template)
 
 
 def logout_view(request):
