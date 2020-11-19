@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacts{% endblock %} 
+
+{% block body%}
+
+{{ object.title }} <br/>
+{{ object.description }} <br/>
+{% if object.image %}
+    <img src='{{ object.image.url }}' class='img-fluid' />
+
+{% endif %}
+{% endblock body%}
