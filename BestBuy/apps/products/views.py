@@ -58,7 +58,7 @@ class ProductListView(ListView):
 
 
 def product_list_view(request):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('-created-on')
     context = {
         'object_list': queryset
     }
@@ -88,7 +88,7 @@ class ProductDetailSlugView(DetailView):
 
 
 class ProductDetailView(DetailView):
-    #queryset = Product.objects.all()
+#    queryset = Product.objects.all()
     template_name = "products/detail.html"
 
     def get_context_data(self, *args, **kwargs):
@@ -121,7 +121,7 @@ def product_detail_view(request, pk=None, *args, **kwargs):
     #     raise Http404("Product doesn't exist")
     # except:
     #     print("huh?")
-
+    queryset = Product.objects.all()
     instance = Product.objects.get_by_id(pk)
     if instance is None:
         raise Http404("Product doesn't exist")
@@ -135,6 +135,7 @@ def product_detail_view(request, pk=None, *args, **kwargs):
     #     raise Http404("Product doesn't exist")
 
     context = {
-        'object': instance
+        'object': instance,
+        'object_list': queryset,
     }
     return render(request, "products/detail.html", context)

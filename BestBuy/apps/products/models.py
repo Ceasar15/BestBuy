@@ -102,8 +102,8 @@ class Product(models.Model):
     battery         = models.CharField(max_length=150, null=True)
     category        = models.CharField(max_length=150, choices=CATEGORY , default= Laptops)
     manufacturer    = models.CharField(max_length=150, choices=MANUFACTURER, default= Apple )
-    updated_on      = models.DateField(auto_now_add=True)
-    created_on      = models.DateField(auto_now_add=True)
+    updated_on      = models.DateField(auto_now_add=True, null=True)
+    created_on      = models.DateField(auto_now_add=True, null=True)
 
     objects = ProductManager()
 
@@ -115,7 +115,7 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.title
-        
+
     class Meta:
         ordering = ['-created_on']
 
