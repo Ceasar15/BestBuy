@@ -87,6 +87,7 @@ class ProductDetailSlugView(DetailView):
 
 
 
+
 class ProductDetailView(DetailView):
 #    queryset = Product.objects.all()
     template_name = "products/detail.html"
@@ -109,7 +110,9 @@ class ProductDetailView(DetailView):
     #     request = self.request
     #     pk = self.kwargs.get('pk')
     #     return Product.objects.filter(pk=pk)
-
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.all()
 
 def product_detail_view(request, pk=None, *args, **kwargs):
     # instance = Product.objects.get(pk=pk, featured=True) #id
