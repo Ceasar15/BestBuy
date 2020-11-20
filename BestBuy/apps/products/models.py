@@ -3,6 +3,7 @@ import random
 import os
 from django.db import models
 from django.db.models.signals import pre_save, post_save
+from django.forms import widgets
 
 
 from .utils import unique_slug_generator
@@ -51,6 +52,11 @@ class ProductManager(models.Manager):
 
 
 class Product(models.Model):
+    # Category Choices
+    CHOICES = [
+
+    ]
+
     title           = models.CharField(max_length=120)
     slug            = models.SlugField(blank=True, unique=True)
     description     = models.TextField()
@@ -58,6 +64,15 @@ class Product(models.Model):
     image           = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
     featured        = models.BooleanField(default=False)
     active          = models.BooleanField(default=True)
+    operating_system = models.CharField(max_length=100, null=True)
+    processor       = models.CharField(max_length=150, null=True)
+    graphics        = models.CharField(max_length=150, null=True)
+    memory          = models.CharField(max_length=150, null=True)
+    hard_drive      = models.CharField(max_length=150, null=True)
+    power_supply    = models.CharField(max_length=150, null=True)
+    battery         = models.CharField(max_length=150, null=True)
+    category        = models.CharField(max_length=100, default="Laptops")
+
 
     objects = ProductManager()
 

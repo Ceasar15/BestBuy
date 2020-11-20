@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Detail {% endblock %} 
+{% block title %} {{ object.title }} {% endblock %} 
 
 {% block body%}
 
@@ -78,9 +78,9 @@
             
             <h1>{{ object.title }}</h1>
 
-            <p> &middot; Chrome OS™</p>
-            <p> &middot; Intel® Celeron® processor</p>
-            <p> &middot; Intel HD Graphics</p>
+            <p> &middot; {{ object.operating_system }}™</p>
+            <p> &middot; {{ object.processor }}1920 1280</p>
+            <p> &middot; {{ object.graphics }}</p>
 
             <p class="price">${{object.price}}</p>
             <p class="price through">$249.99</p>
@@ -107,12 +107,12 @@
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Operating system</label> </div>
-                <div class="col-sm-6"> <p>Chrome OS™</p> </div>
+                <div class="col-sm-6"> <p>{{ object.operating_system}}™</p> </div>
               </div>
               
               <div class="row specification">
                 <div class="col-sm-6"> <label>Processor</label> </div>
-                <div class="col-sm-6"> <p>Intel® Celeron® N2840 with Intel® HD Graphics (2.16 GHz, up to 2.58 GHz, 1 MB cache, 2 cores)</p> </div>
+                <div class="col-sm-6"> <p>{{ object.processor}}</p> </div>
               </div>
 
               <div class="row specification">
@@ -122,17 +122,17 @@
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Graphics</label> </div>
-                <div class="col-sm-6"> <p>Intel HD Graphics</p> </div>
+                <div class="col-sm-6"> <p>{{ object.graphics }}</p> </div>
               </div>
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Memory</label> </div>
-                <div class="col-sm-6"> <p>2 GB DDR3L SDRAM (onboard)</p> </div>
+                <div class="col-sm-6"> <p>{{ object.memory }} RAM</p> </div>
               </div>
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Hard drive</label> </div>
-                <div class="col-sm-6"> <p>16 GB eMMC</p> </div>
+                <div class="col-sm-6"> <p>{{ object.hard_drive }} HDD</p> </div>
               </div>
 
               <div class="row specification">
@@ -142,12 +142,12 @@
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Power supply</label> </div>
-                <div class="col-sm-6"> <p>45 W AC power adapter</p> </div>
+                <div class="col-sm-6"> <p>{{ object.power_supply }}</p> </div>
               </div>
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Battery</label> </div>
-                <div class="col-sm-6"> <p>3-cell, 36 Wh Li-ion</p> </div>
+                <div class="col-sm-6"> <p>{{ object.battery }}</p> </div>
               </div>
           </div>
           <div class="col-sm-5">
