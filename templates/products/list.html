@@ -213,9 +213,9 @@
               <a href='{{ obj.get_absolute_url }}'> <img src="{{ obj.image.url }}" alt="{{ obj.slug }}"/></a>
     
               <div class="content">
-                <h1 class="h4">{{ obj.title }}</h1>
+                <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
-                <label>Laptops</label>
+                <label>{{obj.category}}</label>
 
                 <a href='{{ obj.get_absolute_url }}' class="btn btn-link"> Details</a>
                 <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
@@ -223,153 +223,32 @@
             </div>
             {% endfor %}
 
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/chrome-book-14.jpg' %}" alt="HP Chromebook 14"/></a>
 
-              <div class="content">
-                <h1 class="h4">HP Chromebook 14</h1>
-                <p class="sale">$209.99</p>
-                <p class="price through">$249.99</p>
-                <label>Laptops</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/chrome-book-asus.jpg' %}" alt="HP Chromebook 14"/></a>
-
-              <div class="content">
-                <h1 class="h4">Asus Chromebook</h1>
-                <p class="price">$299.99</p>
-                <label>Laptops</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/ipad-air.jpg' %}" alt="iPad Air"/></a>
-
-              <div class="content">
-                <h1 class="h4">iPad Air</h1>
-                <p class="price">$449.99</p>
-                <label>Tablets</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/ipad-mini.jpg' %}" alt="iPad Mini"/></a>
-
-              <div class="content">
-                <h1 class="h4">iPad Mini</h1>
-                <p class="price">$399.99</p>
-                <label>Tablets</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/mi-pad-2.jpg' %}" alt="Mi Pad 2/"></a>
-
-              <div class="content">
-                <h1 class="h4">Mi Pad 2</h1>
-                <p class="sale">$199.99</p>
-                <p class="price through">$249.99</p>
-                <label>Tablets</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/surface-pro.jpg' %}" alt="Surface Pro"/></a>
-
-              <div class="content">
-                <h1 class="h4">Surface Pro</h1>
-                <p class="price">$199.99</p>
-                <label>Hybrid</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/lenovo-yoga.jpg' %}" alt="Lenovo Yoga"/></a>
-
-              <div class="content">
-                <h1 class="h4">Lenovo Yoga</h1>
-                <p class="price">$199.99</p>
-                <label>Hybrid</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 product">
-              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="{% static 'img/products/asus-transformer.jpg' %}" alt="ASUS Transformer"/></a>
-
-              <div class="content">
-                <h1 class="h4">ASUS Transformer</h1>
-                <p class="price">$199.99</p>
-                <label>Hybrid</label>
-
-                <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-
-          </div>
 
           <nav>
+            {% if is_paginated %}
             <ul class="pagination">
+            {% if page_obj.has_previous %}
               <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true"><i class="ion-ios-arrow-left"></i></span>
+                <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                  <span aria-hidden="true">Previous <i class="ion-ios-arrow-left"></i></span>
                 </a>
               </li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="disabled"><a href="#">..</a></li>
-              <li><a href="#">10</a></li>
+              {% endif %}
+              {% if page_obj.has_next %}
               <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true"><i class="ion-ios-arrow-right"></i></span>
+                <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                  <span aria-hidden="true"><i class="ion-ios-arrow-right"></i> Next</span>
                 </a>
               </li>
+              {% endif %}
             </ul>
+            {% endif %}
           </nav>
         </div>
         <!-- /// -->
       </div>
     </div>
     <br><br>
-
-
-{% for obj in object_list %}
-<a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a><br/>
-
-{% endfor %}
 
 {% endblock body%}

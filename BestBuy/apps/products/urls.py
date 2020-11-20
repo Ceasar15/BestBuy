@@ -10,6 +10,6 @@ urlpatterns = [
 
     path('catalog/', views.CatalogView.as_view(), name='products_catalog'),
     path('gallery/', views.GalleryView.as_view(), name='products_gallery'),
-    url(r'^$', views.ProductListView.as_view()),
+    url(r'^$', views.ProductListView.as_view(), name='products_list'),
     url(r'^(?P<slug>[\w-]+)/$', views.ProductDetailSlugView.as_view()),
 ]

@@ -49,13 +49,42 @@ class ProductManager(models.Manager):
             return qs.first()
         return None
 
+Laptops= 'Laptops'
+Tablets = 'Tablets'
+Phones = 'Phones'
 
+HP = 'HP'
+Dell = 'Dell'
+Lenovo = 'Lenovo'
+Acer = 'Acer'
+Apple = 'Apple'
+Samsung = 'Samsung'
+Microsoft = 'Microsoft'
+Sony = 'Sony'
+Techno = 'Techno'
+Infinix = 'Infinix' 
 
 class Product(models.Model):
     # Category Choices
-    CHOICES = [
+    CATEGORY = (
+        (Laptops, 'Laptops'),
+        (Tablets, 'Tablets'),
+        (Phones, 'Phones'),
+    )
 
-    ]
+    MANUFACTURER = (
+        (HP, 'HP'),
+        (Acer, 'Acer'),
+        (Dell, 'Dell'),
+        (Sony, 'Sony'),
+        (Apple, 'Apple'),
+        (Lenovo, 'Lenovo'),
+        (Techno, 'Techno'),        
+        (Infinix, 'Infinix'), 
+        (Samsung, 'Samsung'),
+        (Microsoft, 'Microsoft'),
+
+    )
 
     title           = models.CharField(max_length=120)
     slug            = models.SlugField(blank=True, unique=True)
@@ -71,8 +100,10 @@ class Product(models.Model):
     hard_drive      = models.CharField(max_length=150, null=True)
     power_supply    = models.CharField(max_length=150, null=True)
     battery         = models.CharField(max_length=150, null=True)
-    category        = models.CharField(max_length=100, default="Laptops")
-
+    category        = models.CharField(max_length=150, choices=CATEGORY , default= Laptops)
+    manufacturer    = models.CharField(max_length=150, choices=MANUFACTURER, default= Apple )
+    updated_on      = models.DateField(auto_now_add=True)
+    created_on      = models.DateField(auto_now_add=True)
 
     objects = ProductManager()
 
@@ -84,7 +115,9 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.title
-
+        
+    class Meta:
+        ordering = ['-created_on']
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
