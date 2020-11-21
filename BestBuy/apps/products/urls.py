@@ -9,6 +9,7 @@ from . import views
 urlpatterns = [
 
     path('catalog/', views.CatalogView.as_view(), name='products_catalog'),
+    path('recom/', views.recom_list_view, name='recom_products'),
     path('gallery/', views.GalleryView.as_view(), name='products_gallery'),
     url(r'^$', views.ProductListView.as_view(), name='products_list'),
     url(r'^(?P<slug>[\w-]+)/$', views.ProductDetailSlugView.as_view()),

@@ -65,6 +65,14 @@ def product_list_view(request):
     return render(request, "products/list.html", context)
 
 
+def recom_list_view(request):
+    queryset = Product.objects.all()
+    context = {
+        'object_list': queryset
+    }
+    return render(request, "products/recommendation.html", context)
+
+
 
 class ProductDetailSlugView(DetailView):
     queryset = Product.objects.all()
