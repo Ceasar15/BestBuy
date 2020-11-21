@@ -1,4 +1,3 @@
-from BestBuy.apps.products.views import product_detail_view
 from django.urls import path
 from django.conf.urls import url
 

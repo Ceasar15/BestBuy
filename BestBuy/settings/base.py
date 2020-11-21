@@ -36,8 +36,8 @@ DEBUG = False
 ########## APP CONFIGURATION
 DJANGO_APPS = (
     # Default Django apps:
-    'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
@@ -64,8 +64,8 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'apps.users',
-    'apps.products',
-    
+#    'apps.products.ProductsConfig',
+    'apps.products'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -272,5 +272,3 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.template.TemplateFilter',
 ]
 ########## END COMPRESSION CONFIGURATION
-
-
