@@ -93,11 +93,17 @@ class ProductDetailSlugView(DetailView):
             raise Http404("Uhhmmm ")
         return instance
 
-
+        # def get_queryset(self, *args, **kwargs):
+    #     request = self.request
+    #     pk = self.kwargs.get('pk')
+    #     return Product.objects.filter(pk=pk)
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.all()
 
 
 class ProductDetailView(DetailView):
-#    queryset = Product.objects.all()
+    queryset = Product.objects.all()
     template_name = "products/detail.html"
 
     def get_context_data(self, *args, **kwargs):
@@ -122,7 +128,7 @@ class ProductDetailView(DetailView):
         request = self.request
         return Product.objects.all()
 
-def product_detail_view(request, pk=None, *args, **kwargs):
+def product_detail_view(self, request,pk=None, *args, **kwargs):
     # instance = Product.objects.get(pk=pk, featured=True) #id
     # instance = get_object_or_404(Product, pk=pk, featured=True)
     # try:
@@ -132,8 +138,10 @@ def product_detail_view(request, pk=None, *args, **kwargs):
     #     raise Http404("Product doesn't exist")
     # except:
     #     print("huh?")
+    request = self.request
+    slug = self.kwargs.get('slug')
     queryset = Product.objects.all()
-    instance = Product.objects.get_by_id(pk)
+    instance = Product.objects.get(slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
     #print(instance)
