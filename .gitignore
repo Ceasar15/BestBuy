@@ -133,3 +133,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.idea
+idea
+.vscode
+vscode
