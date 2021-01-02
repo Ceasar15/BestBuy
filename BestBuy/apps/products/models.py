@@ -127,7 +127,7 @@ class Product(models.Model):
         index_together = (('id', 'slug'),)
 
     def get_absolute_url(self):
-        return "/products/{slug}/".format(slug=self.slug)
+        return "{slug}/".format(slug=self.slug)
 
     def __str__(self):
         return self.title

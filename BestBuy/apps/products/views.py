@@ -87,6 +87,7 @@ def recom_list_view(request):
 class ProductDetailSlugView(DetailView):
     queryset = Product.objects.all()
     template_name = "products/detail.html"
+    cart_product_form = CartAddProductForm()
 
     def get_object(self, *args, **kwargs):
         request = self.request
@@ -107,6 +108,7 @@ class ProductDetailSlugView(DetailView):
         queryset = Product.objects.all()
         context = {
             'object_list': queryset,
+            
         }
         return render(request, "products/recommendation.html", context)
  
