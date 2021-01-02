@@ -122,6 +122,9 @@ class Product(models.Model):
     # class Meta:
     #     app_label = 'apps.products'
 
+    class Meta:
+        ordering = ('title',)
+        index_together = (('id', 'slug'),)
 
     def get_absolute_url(self):
         return "/products/{slug}/".format(slug=self.slug)
@@ -131,6 +134,7 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.title
+
 
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
