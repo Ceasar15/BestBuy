@@ -14,6 +14,6 @@ urlpatterns = [
     path('gallery/', views.GalleryView.as_view(), name='products_gallery'),
 #    url(r'^$', views.ProductListView.as_view(), name='products_list'),
     path('products/', views.product_list_view, name='products_list'),
-    path('products/<slug:slug>/', views.product_detail_view),
+    path('products/<int:id>/<slug:slug>/', views.product_detail_view),
 #    path('<slug:slug>/', views.ProductDetailSlugView.as_view()),
 ]

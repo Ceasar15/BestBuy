@@ -133,10 +133,11 @@ class ProductDetailSlugView(DetailView):
 #         request = self.request
 #         return Product.objects.all()
 
-def product_detail_view(self, request, pk=None, *args, **kwargs):
-    request = self.request
-    slug = self.kwargs.get('slug')
-    queryset = Product.objects.all()
+def product_detail_view(request, id, slug, pk=None, *args, **kwargs):
+    # request = self.request
+    # slug = self.kwargs.get('slug')
+    queryset = Product.objects.get(id=id, slug=slug)
+    cart_product_form = CartAddProductForm()
     instance = Product.objects.get(slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
@@ -144,6 +145,8 @@ def product_detail_view(self, request, pk=None, *args, **kwargs):
     context = {
         'object': instance,
         'object_list': queryset,
+        'cart_product_form': cart_product_form,
+        
     }
     return render(request, "products/detail.html", context)
 
