@@ -133,30 +133,13 @@ class ProductDetailSlugView(DetailView):
 #         request = self.request
 #         return Product.objects.all()
 
-def product_detail_view(self, request,pk=None, *args, **kwargs):
-    # instance = Product.objects.get(pk=pk, featured=True) #id
-    # instance = get_object_or_404(Product, pk=pk, featured=True)
-    # try:
-    #     instance = Product.objects.get(id=pk)
-    # except Product.DoesNotExist:
-    #     print('no product here')
-    #     raise Http404("Product doesn't exist")
-    # except:
-    #     print("huh?")
+def product_detail_view(self, request, pk=None, *args, **kwargs):
     request = self.request
     slug = self.kwargs.get('slug')
     queryset = Product.objects.all()
     instance = Product.objects.get(slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
-    #print(instance)
-    # qs  = Product.objects.filter(id=pk)
-
-    # #print(qs)
-    # if qs.exists() and qs.count() == 1: # len(qs)
-    #     instance = qs.first()
-    # else:
-    #     raise Http404("Product doesn't exist")
 
     context = {
         'object': instance,
