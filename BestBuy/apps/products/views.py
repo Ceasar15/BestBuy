@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import Product
+from apps.cart.forms import CartAddProductForm
+
 # Create your views here.
 
 
@@ -59,6 +61,8 @@ class ProductFeaturedDetailView(DetailView):
 #         request = self.request
 #         return Product.objects.all()
 
+#
+# DSFMDOFMDSF DFSDMFISDMFSD FSDKF MSDFMOSDF SDFSMDFOMS
 
 def product_list_view(request):
     queryset = Product.objects.all().order_by('-created_on')
