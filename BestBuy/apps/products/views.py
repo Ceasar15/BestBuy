@@ -66,9 +66,12 @@ class ProductFeaturedDetailView(DetailView):
 
 def product_list_view(request):
     queryset = Product.objects.all().order_by('-created_on')
+    cart_product_form = CartAddProductForm()
     context = {
-        'object_list': queryset
+        'object_list': queryset,
+        'cart_product_form': cart_product_form,
     }
+
     return render(request, "products/list.html", context)
 
 
