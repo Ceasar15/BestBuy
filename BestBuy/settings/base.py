@@ -65,7 +65,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'apps.users',
 #    'apps.products.ProductsConfig',
-    'apps.products'
+    'apps.products',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -215,8 +215,6 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 ########## END URL CONFIGURATION
 
 
-
-
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
 LOGGING = {
@@ -272,3 +270,8 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.template.TemplateFilter',
 ]
 ########## END COMPRESSION CONFIGURATION
+
+
+## SESSION CART
+
+CART_SESSION_ID = 'cart'
