@@ -104,13 +104,7 @@ class ProductDetailSlugView(DetailView):
             raise Http404("Uhhmmm ")
         return instance
 
-    def recom_list_view(request):
-        queryset = Product.objects.all()
-        context = {
-            'object_list': queryset,
-            
-        }
-        return render(request, "products/recommendation.html", context)
+
  
 
 # class ProductDetailView(DetailView):
