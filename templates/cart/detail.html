@@ -33,7 +33,7 @@
                             <div class="media-body">
                               <h2 class="h4 media-heading">{{ product.title }}</h2>
                               <label>{{ product.category }}</label>
-                              <p class="price">${{ product.price }}</p>
+                              <p class="price">${{ item.price }}</p>
                             </div>
                             <div class="controls">
                               <div class="input-group">
@@ -226,7 +226,7 @@
                                 <p>Subtotal (7 items)</p>
                             </div>
                             <div class="col-xs-6">
-                                <p><b>$1499</b></p>
+                                <p><b>${{ cart.get_total_price }}</b></p>
                             </div>
                         </div>
                     </div>
@@ -238,7 +238,7 @@
                                 <h3 class="no-margin">Total sum</h3>
                             </div>
                             <div class="col-xs-6">
-                                <h3 class="no-margin">$1499</h3>
+                                <h3 class="no-margin">${{ cart.get_total_price }}</h3>
                             </div>
                         </div>
                     </div>
