@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Product Catalog{% endblock %} 
+{% block title %}Shopping Cart{% endblock %} 
 
 {% block body%}
 
@@ -8,7 +8,7 @@
 
     <div class="box">
       <div class="container">
-          <h1>Shopping Cart</h1>
+          <h1>Your Shopping Cart</h1>
           <hr class="offset-sm">
       </div>
     </div>
@@ -22,17 +22,18 @@
                   <div class="panel-body">
                     <div class="checkout-cart">
                       <div class="content">
-
+                        {% for item in cart %}
+                            {% with product=item.product%}
                           <div class="media">
                             <div class="media-left">
-                              <a href="#">
-                                <img class="media-object" src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
+                              <a href="{{ product.get_absolute_url }}">
+                                <img class="media-object" src="{{ product.image.url }}" alt="{{ product.slug }}"/>
                               </a>
                             </div>
                             <div class="media-body">
-                              <h2 class="h4 media-heading">HP Chromebook 11</h2>
-                              <label>Laptops</label>
-                              <p class="price">$199.99</p>
+                              <h2 class="h4 media-heading">{{ product.title }}</h2>
+                              <label>{{ product.category }}</label>
+                              <p class="price">${{ product.price }}</p>
                             </div>
                             <div class="controls">
                               <div class="input-group">
@@ -48,6 +49,8 @@
                               <a href="#remove"> <i class="ion-trash-b"></i> Remove </a>
                             </div>
                           </div>
+                            {% endwith %}
+                        {% endfor %}
 
                           <div class="media">
                             <div class="media-left">
