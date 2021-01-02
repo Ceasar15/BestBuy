@@ -85,8 +85,12 @@
             <p class="price">${{object.price}}</p>
             <p class="price through">$249.99</p>
             <br><br>
-
-            <button class="btn btn-primary btn-rounded"> <i class="ion-bag"></i> Add to cart</button>
+            <form action="{% url 'cart:cart_add' obj.id %}" method="post">
+              {% csrf_token %}
+              {{ cart_product_form }}
+              <input class="btn btn-primary btn-rounded btn-sm" type="submit" value="Add to Cart">
+            </form>
+            <!-- <button class="btn btn-primary btn-rounded"> <i class="ion-bag"></i> Add to cart</button> -->
           </div>
         </div>
     		<br><br><br>
