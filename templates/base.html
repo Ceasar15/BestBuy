@@ -51,7 +51,7 @@
                 <a href="./catalog/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{% url 'products_list' %}">Product</a></li>
-                  <li><a href="./cart/">Cart</a></li>
+                  <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
                   <li><a href="./checkout/">Checkout</a></li>
                   <li><a href="{% url 'faq' %}">FAQ</a></li>
                   <li><a href="{% url 'contact' %}">Contacts</a></li>
@@ -66,8 +66,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-              <li><a href="{% url 'login' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
-              <li><a href="{% url 'login' %}"> <i class="icon ion-heart"></i> WishList </a></li>
+              <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
+              <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-heart"></i> WishList </a></li>
               <li><a href="{% url 'logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
               {% else %}
               <li><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>

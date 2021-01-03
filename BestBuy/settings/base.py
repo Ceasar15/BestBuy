@@ -177,6 +177,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.template.context_processors.csrf',
                 'django.contrib.messages.context_processors.messages',
+                'apps.cart.context_processors.cart',
             ],
         },
     },
