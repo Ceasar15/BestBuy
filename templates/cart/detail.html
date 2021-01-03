@@ -37,13 +37,6 @@
                             </div>
                             <div class="controls">
                               <div class="input-group">
-                                <!-- <span class="input-group-btn">
-                                  <button class="btn btn-default btn-sm" type="button" data-action="minus"><i class="ion-minus-round"></i></button>
-                                </span>
-                                <input type="text" class="form-control input-sm" placeholder="Qty" value="1" readonly="">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-default btn-sm" type="button" data-action="plus"><i class="ion-plus-round"></i></button>
-                                </span> -->
                                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
                                   {% csrf_token %}
                                   {{ item.update_quantity_form.quantity }}
