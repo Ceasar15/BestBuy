@@ -68,7 +68,15 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-6">
-                                <p>Subtotal (7 items)</p>
+                                {% with total_items=cart|length %}
+                                  {% if total_items > 0 %}
+                                    <p>Total Items:
+                                      {{ total_items }} item{{ total_items|pluralize }}
+                                    </p> 
+                                  {% else %}
+                                    <p>Your Cart is Empty</p>
+                                  {% endif %}
+                                {% endwith %}
                             </div>
                             <div class="col-xs-6">
                                 <p><b>${{ cart.get_total_price }}</b></p>
