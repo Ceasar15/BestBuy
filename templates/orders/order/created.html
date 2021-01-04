@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product Catalog{% endblock %} 
+
+{% block body%}
+<div class="box">
+    <div class="container">
+        <h1>Thank You!</h1>
+        <p>Your goods are on their way</p>
+        <a href="{% url 'products_list' %}">Continue Shopping</a> <br>
+        <a href="{% url 'home' %}">Back to Home</a>
+        <hr class="offset-sm">
+    </div>
+  </div>
+  <hr class="offset-md">
+
+{% endblock body %}
