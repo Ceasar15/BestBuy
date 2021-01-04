@@ -539,10 +539,11 @@
               <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <p><input class="btn btn-primary btn-lg justify" type="submit" value="Place Order"></p>
+                <!-- <p><i class="ion-compose"></i>&nbsp;&nbsp;<input class="btn btn-primary btn-lg justify" type="submit" value="Place Order"></p> -->
+                <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button>
             </form>
 
-              <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button>
+              <!-- <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button> -->
             </div>
           </div>
       </div>
