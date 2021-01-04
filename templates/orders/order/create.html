@@ -23,7 +23,7 @@
                     <h2> 1. Delevery address</h2>
                     <hr class="offset-sm">
 
-                    <address class="box-default sm-padding" data-style="selected">
+                    <!-- <address class="box-default sm-padding" data-style="selected">
                         <hr class="offset-sm">
 
                         <h3 class="no-margin"><i class="ion-ios-person"></i> John Doe</h3>
@@ -48,7 +48,7 @@
                             <i class="ion-checkmark-round"></i>
                         </div>
                         <hr class="offset-sm">
-                    </address>
+                    </address> -->
 
                     <hr class="offset-sm">
                     <a href="#addaddress" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -64,7 +64,8 @@
                                       <!-- <input type="text" class="form-control" name="country" value="" required="" placeholder="" /> -->
 
                                       <div class="group-select justify" tabindex='1'>
-                                          <input class="form-control select" id="country" name="country" value="United Kingdom" placeholder="" required="" />
+                                            <input class="form-control select" type="text" name="country" value="United Kingdom" maxlength="250" required id="id_country" placeholder="Country" />
+                                          <!-- <input class="form-control select" id="country" name="country" value="United Kingdom" placeholder="" required="" /> -->
 
                                           <ul class="dropdown">
                                             <li data-value="Aaland Islands">Aaland Islands</li>
@@ -326,7 +327,15 @@
                                       </div>
                                     </div>
                                 </div>
-
+                                <p><label for="id_first_name">First name:</label> <input type="text" name="first_name" maxlength="50" required id="id_first_name"></p>
+                                <p><label for="id_last_name">Last name:</label> <input type="text" name="last_name" maxlength="50" required id="id_last_name"></p>
+                                <p><label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required id="id_email"></p>
+                                <p><label for="id_country">Country:</label> <input type="text" name="country" maxlength="250" required id="id_country"></p>
+                                <p><label for="id_postal_code">Postal code:</label> <input type="text" name="postal_code" maxlength="20" required id="id_postal_code"></p>
+                                <p><label for="id_city">City:</label> <input type="text" name="city" maxlength="50" required id="id_city"></p>
+                                <p><label for="id_street">Street:</label> <input type="text" name="street" maxlength="50" required id="id_street"></p>
+                                <p><label for="id_building">Building:</label> <input type="text" name="building" maxlength="50" required id="id_building"></p>
+                                
                                 <hr class="offset-sm">
                                 <div class="row">
                                   <div class="col-sm-4">
@@ -338,7 +347,7 @@
                                     <hr class="offset-sm visible-xs">
                                     <p>Street</p>
 
-                                    <input type="text" class="form-control input-sm" name="street" value="" required="" placeholder="" />
+                                    <input type="text" class="form-control input-sm" name="street" value="" maxlength="50" required id="id_street" required="" placeholder="" />
                                   </div>
                                   <div class="col-sm-2">
                                     <hr class="offset-sm visible-xs">
