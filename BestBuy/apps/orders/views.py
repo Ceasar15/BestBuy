@@ -14,6 +14,19 @@ def order_create(request):
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
                 #clear the cart
-
+                cart.clear()
+                template = 'orders/order/created.html'
+                context = {
+                    'order': order,
+                }
+                return render(request, template, context)
+        else:
+            form = OrderCreateForm()
+        template = 'orders/order/created.html'
+        context = {
+            'cart': cart,
+            'form': form,
+        }
+        return render(request, template, context)
 # Create your views here.
 
