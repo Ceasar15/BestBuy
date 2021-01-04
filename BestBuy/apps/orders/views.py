@@ -28,5 +28,5 @@ def order_create(request):
             'form': form,
         }
         return render(request, template, context)
-# Create your views here.
+
 
