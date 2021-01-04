@@ -20,13 +20,13 @@ def order_create(request):
                     'order': order,
                 }
                 return render(request, template, context)
-        else:
-            form = OrderCreateForm()
-        template = 'orders/order/created.html'
-        context = {
-            'cart': cart,
-            'form': form,
-        }
-        return render(request, template, context)
+    else:
+        form = OrderCreateForm()
+    template = 'orders/order/create.html'
+    context = {
+        'cart': cart,
+        'form': form,
+    }
+    return render(request, template, context)
 
 
