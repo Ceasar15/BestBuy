@@ -10,6 +10,7 @@ from apps.products import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('apps.cart.urls', namespace='cart')),
+    path('orders/', include('apps.orders.urls', namespace='orders') ),
     url('products/',include('apps.products.urls')),
     url('users/', include('apps.users.urls')),
     path('', views.home, name='home' ),
