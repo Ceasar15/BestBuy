@@ -12,6 +12,7 @@ class Order(models.Model):
     city = models.CharField(max_length=50)
     street = models.CharField(max_length=50)
     building = models.CharField(max_length=50)
+    zip_number = models.CharField(max_length=10)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
