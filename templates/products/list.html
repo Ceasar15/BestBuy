@@ -211,8 +211,6 @@
         <!-- Products -->
         <div class="col-sm-9 products">
           <div class="row">
-
-
             {% for obj in object_list %}
             <div class="col-sm-6 col-md-4 product">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
@@ -223,13 +221,8 @@
                 <p class="price">${{ obj.price }}</p>
                 
                 <label>{{obj.category}}</label>
-                <label>{{ obj.tags.filter }}</label>
+                <label>{{ obj.tags.all }}</label>
 
-                <a href='{{ obj.get_absolute_url }}' class="btn btn-link"> Details</a>
-                {% for tag in product.tags.all %}
-                <a href="{% url 'product_list_by_tag' tag.slug %}" class="btn btn-link" >
-                  {{ tag.name }}</a>
-                {% endfor %}
                 <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                 <form action="{% url 'cart:cart_add' obj.id %}" method="post">
                   {% csrf_token %}

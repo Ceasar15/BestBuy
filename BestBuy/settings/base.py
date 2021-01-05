@@ -280,3 +280,8 @@ COMPRESS_JS_FILTERS = [
 ## SESSION CART
 
 CART_SESSION_ID = 'cart'
+
+
+## Taggit Case Sensitivity
+
+TAGGIT_CASE_INSENSITIVE = True
