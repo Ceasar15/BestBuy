@@ -25,10 +25,12 @@
           <label class="btn btn-default btn-xs active">
             <input type="radio" name="options" id="option1" checked> All products
           </label>
-          {% for tag in object_list.tags.all %}
+          {% for obj in object_list %}
+            {% for tag in obj.tags.all %}
           <label class="btn btn-default btn-xs">
-            <input type="radio" name="options" id="option2"> dddd {{ tag }}
+            <input type="radio" name="options" id="option2"> {{ tag }}
           </label>
+            {% endfor %}
           {% endfor %}
           <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
@@ -214,11 +216,6 @@
               <div class="content">
                 <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
-                {% for tag in obj.tags.all %}
-                <label class="btn btn-default btn-xs">
-                  <input type="radio" name="options" id="option2"> dddd {{ tag }}
-                </label>
-                {% endfor %}
                 <label>{{obj.category}}</label>
                 <label>{{ obj.tags.all }}</label>
 
