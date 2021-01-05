@@ -28,8 +28,9 @@
           {% for obj in object_list %}
             {% for tag in obj.tags.all %}
           <label class="btn btn-default btn-xs">
-            <input type="radio" name="options" id="option2"> {{ tag }}
+            <input type="radio" name="options" id="option2"> <a href="{% url 'product_list_by_tag' tag.slug %}">{{ tag }}</a> 
           </label>
+              {% if not forloop.last %}, {% endif %}
             {% endfor %}
           {% endfor %}
           <!-- <label class="btn btn-default btn-xs">
