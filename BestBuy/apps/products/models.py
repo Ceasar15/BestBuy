@@ -117,7 +117,7 @@ class Product(models.Model):
     manufacturer    = models.CharField(max_length=150, choices=MANUFACTURER, default= Apple )
     updated_on      = models.DateField(auto_now_add=True, null=True)
     created_on      = models.DateField(auto_now_add=True, null=True)
-    
+    tags            = TaggableManager()    
 
     objects = ProductManager()
 
