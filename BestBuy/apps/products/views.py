@@ -2,7 +2,7 @@ from django.http import request, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 
-
+from taggit.models import Tag
 
 from .models import Product
 from apps.cart.forms import CartAddProductForm
@@ -66,12 +66,19 @@ class ProductFeaturedDetailView(DetailView):
 #
 # DSFMDOFMDSF DFSDMFISDMFSD FSDKF MSDFMOSDF SDFSMDFOMS
 
-def product_list_view(request):
+def product_list_view(request, tag_slug = None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
+    tag = None
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = queryset.filter(tags__in=[tag])
+    
     context = {
         'object_list': queryset,
         'cart_product_form': cart_product_form,
+        'tag': tag,
     }
 
     return render(request, "products/list.html", context)
