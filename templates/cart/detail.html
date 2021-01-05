@@ -41,7 +41,8 @@
                                   {% csrf_token %}
                                   {{ item.update_quantity_form.quantity }}
                                   {{ item.update_quantity_form.override }}
-                                  <input class="btn btn-default btn-sm" type="submit" value="Update">
+                                  <button class="btn btn-default btn-sm"><i class="fas fa-shopping-cart"></i> Update</button>
+                                    <!-- <input class="btn btn-default btn-sm" type="submit" value="Update"> -->
                                 </form>                                
                                 <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                                   <!-- <input class="btn btn-default btn-sm" type="submit" value="Remove"><i class="ion-trash-b"></i> -->
