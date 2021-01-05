@@ -12,6 +12,9 @@
         <div class="btn-group pull-right">
           <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="ion-arrow-down-b"></i> Sorting by name
+            {% if tag %}
+            <p>{{ tag.name }}</p>
+            {% endif %}
           </button>
           <ul class="dropdown-menu">
             <li class="active"><a href="#"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
@@ -221,6 +224,9 @@
                 <label>{{obj.category}}</label>
 
                 <a href='{{ obj.get_absolute_url }}' class="btn btn-link"> Details</a>
+                {% for tag in product.tags.all %}
+                <a href="{% url %}"></a>
+
                 <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                 <form action="{% url 'cart:cart_add' obj.id %}" method="post">
                   {% csrf_token %}
