@@ -23,7 +23,7 @@
         {% if tag %}
             <p>{{ tag.name }}</p>
             {% endif %}
-        <p> TagsL: {{ object_list.tags.all|join:", "}}</p>
+        <p> TagsL: {{ object_list.tags.all}}</p>
         <p>Search by tags</p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-default btn-xs active">
@@ -31,7 +31,7 @@
           </label>
           {% if tag %}
           <label class="btn btn-default btn-xs">
-            <input type="radio" name="options" id="option2"> dddd {{ tag.name }}
+            <input type="radio" name="options" id="option2"> dddd {{ product.tag.name }}
             
           </label>
           {% endif %}
@@ -221,8 +221,9 @@
               <div class="content">
                 <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
-                <p class="price">${{ obj.tags }}</p>
+                
                 <label>{{obj.category}}</label>
+                <label>{{ obj.tags.filter }}</label>
 
                 <a href='{{ obj.get_absolute_url }}' class="btn btn-link"> Details</a>
                 {% for tag in product.tags.all %}
