@@ -23,7 +23,7 @@
         <p>Search by tags</p>
         <div class="btn-group" >
           <label class="btn btn-default btn-xs active">
-            <input type="radio" name="options" id="option1" checked> All products
+            <a href="{% url 'products_list' %}">All Products</a>
           </label>
           {% for obj in object_list %}
             {% for tag in obj.tags.all %}
@@ -33,9 +33,9 @@
               {% if not forloop.last %}, {% endif %}
             {% endfor %}
           {% endfor %}
-          <label class="btn btn-default btn-xs">
+          <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
-          </label> 
+          </label>  -->
           <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option4"> Mobility
           </label>
