@@ -7,7 +7,7 @@ from memcacheify import memcacheify
 from postgresify import postgresify
 
 from .base import *
-
+from .database import *
 
 ########## DATABASE CONFIGURATION
 DATABASES = postgresify()
