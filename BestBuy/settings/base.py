@@ -57,9 +57,6 @@ THIRD_PARTY_APPS = (
 
     # Static file management:
     'compressor',
-
-    # Asynchronous task queue:
-    'djcelery',
 )
 
 LOCAL_APPS = (

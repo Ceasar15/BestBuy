@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import OrderItem
 from .forms import OrderCreateForm
 from apps.cart.cart import Cart
-
+from .tasks import order_created
 
 def order_create(request):
     cart = Cart(request)
@@ -19,6 +19,8 @@ def order_create(request):
                 context = {
                     'order': order,
                 }
+                # Lauch asynchronous task
+                order_created.delay(order.id)
                 return render(request, template, context)
     else:
         form = OrderCreateForm()

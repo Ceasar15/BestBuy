@@ -11,7 +11,8 @@ django-celery = "*"
 whitenoise = "*"
 django-heroku-postgresify = "*"
 django-heroku-memcacheify = "*"
-celery = "*"
+celery = "==4.3.0"
+kombu = "*"
 
 [dev-packages]
 
