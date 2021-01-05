@@ -14,6 +14,7 @@ django-heroku-memcacheify = "*"
 celery = "==4.3.0"
 kombu = "*"
 flower = "==0.9.3"
+django-taggit = "==1.2.0"
 
 [dev-packages]
 

@@ -49,6 +49,9 @@ DJANGO_APPS = (
     # Admin panel and documentation:
     'django.contrib.admin',
     'django.contrib.admindocs',
+    
+    # tagging functionality
+    'taggit',
 )
 
 THIRD_PARTY_APPS = (
@@ -83,7 +86,9 @@ ADMINS = (
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
+
 MANAGERS = ADMINS
+
 ########## END MANAGER CONFIGURATION
 
 ## USER CONFIGURATION

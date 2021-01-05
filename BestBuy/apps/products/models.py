@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.db.models.signals import pre_save, post_save
 from django.forms import widgets
 
+from taggit.managers import TaggableManager
 
 from .utils import unique_slug_generator
 
@@ -116,6 +117,7 @@ class Product(models.Model):
     manufacturer    = models.CharField(max_length=150, choices=MANUFACTURER, default= Apple )
     updated_on      = models.DateField(auto_now_add=True, null=True)
     created_on      = models.DateField(auto_now_add=True, null=True)
+    
 
     objects = ProductManager()
 
