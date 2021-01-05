@@ -66,21 +66,18 @@ class ProductFeaturedDetailView(DetailView):
 #
 # DSFMDOFMDSF DFSDMFISDMFSD FSDKF MSDFMOSDF SDFSMDFOMS
 
-def product_list_view(request, tag_slug = None):
+def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
     tag = None
-
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         queryset = queryset.filter(tags__in=[tag])
-    
     context = {
         'object_list': queryset,
         'cart_product_form': cart_product_form,
         'tag': tag,
     }
-
     return render(request, "products/list.html", context)
 
 
