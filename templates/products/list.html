@@ -35,10 +35,10 @@
             
           </label>
           {% endif %}
-          <!-- <label class="btn btn-default btn-xs">
+          <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
           </label>
-          <label class="btn btn-default btn-xs">
+          <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option4"> Mobility
           </label>
           <label class="btn btn-default btn-xs">
@@ -221,6 +221,7 @@
               <div class="content">
                 <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
+                <p class="price">${{ obj.tags }}</p>
                 <label>{{obj.category}}</label>
 
                 <a href='{{ obj.get_absolute_url }}' class="btn btn-link"> Details</a>
