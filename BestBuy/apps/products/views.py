@@ -73,7 +73,7 @@ def product_list_view(request, tag_slug = None):
 
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        object_list = queryset.filter(tags__in=[tag])
+        queryset = queryset.filter(tags__in=[tag])
     
     context = {
         'object_list': queryset,

@@ -26,10 +26,13 @@
           <label class="btn btn-default btn-xs active">
             <input type="radio" name="options" id="option1" checked> All products
           </label>
+          {% if tag %}
           <label class="btn btn-default btn-xs">
-            <input type="radio" name="options" id="option2"> Business
+            <input type="radio" name="options" id="option2"> dddd {{ tag.name }}
+            
           </label>
-          <label class="btn btn-default btn-xs">
+          {% endif %}
+          <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
           </label>
           <label class="btn btn-default btn-xs">
@@ -40,7 +43,7 @@
           </label>
           <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option6"> Gaming
-          </label>
+          </label> -->
         </div>
     </div>
 
