@@ -20,21 +20,16 @@
             <li><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
           </ul>
         </div>
-        {% if tag %}
-            <p>{{ tag.name }}</p>
-            {% endif %}
-        <p> TagsL: {{ object_list.tags.all}}</p>
         <p>Search by tags</p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-default btn-xs active">
             <input type="radio" name="options" id="option1" checked> All products
           </label>
-          {% if tag %}
+          {% for tag in object_list.tags.all %}
           <label class="btn btn-default btn-xs">
-            <input type="radio" name="options" id="option2"> dddd {{ product.tag.name }}
-            
+            <input type="radio" name="options" id="option2"> dddd {{ tag }}
           </label>
-          {% endif %}
+          {% endfor %}
           <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
           </label>
@@ -219,7 +214,11 @@
               <div class="content">
                 <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
-                
+                {% for tag in obj.tags.all %}
+                <label class="btn btn-default btn-xs">
+                  <input type="radio" name="options" id="option2"> dddd {{ tag }}
+                </label>
+                {% endfor %}
                 <label>{{obj.category}}</label>
                 <label>{{ obj.tags.all }}</label>
 
