@@ -32,9 +32,9 @@
           </label>
             {% endfor %}
           {% endfor %}
-          <label class="btn btn-default btn-xs">
+          <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option3"> Home
-          </label>
+          </label> -->
           <!-- <label class="btn btn-default btn-xs">
             <input type="radio" name="options" id="option4"> Mobility
           </label>
@@ -217,7 +217,6 @@
                 <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
                 <p class="price">${{ obj.price }}</p>
                 <label>{{obj.category}}</label>
-                <label>{{ obj.tags.all }}</label>
 
                 <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                 <form action="{% url 'cart:cart_add' obj.id %}" method="post">
