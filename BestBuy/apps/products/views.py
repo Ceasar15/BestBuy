@@ -151,9 +151,7 @@ class ProductDetailSlugView(DetailView):
 #         request = self.request
 #         return Product.objects.all()
 
-def product_detail_view(request, id, slug, pk=None, *args, **kwargs):
-    # request = self.request
-    # slug = self.kwargs.get('slug')
+def product_detail_view(request, slug, *args, **kwargs):
     queryset = Product.objects.all()
     cart_product_form = CartAddProductForm()
     instance = Product.objects.get(slug=slug, active=True)
