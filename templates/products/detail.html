@@ -210,8 +210,8 @@
             <h1 class="h3">Recommendation for loop you</h1>
             
             <div class="row">
+              {% for obj in object_list %}
               <div class="col-sm-6 col-md-3 product">
-                {% for obj in object_list %}
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
                 <a href='{{ obj.get_absolute_url }}'><img src="{{ obj.image.url }}" alt="HP {{ obj.slug }}"/></a>
 
@@ -224,6 +224,7 @@
                   <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
                 </div>
               </div>
+              {% endfor %}
             </div>
         </div>
     </section>
