@@ -1,7 +1,7 @@
 from django.http import request, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
-from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage
+from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage, paginator
 
 from taggit.models import Tag
 
@@ -70,6 +70,11 @@ class ProductFeaturedDetailView(DetailView):
 def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
+    paginator = Paginator(queryset, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+        
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
