@@ -76,7 +76,7 @@ def product_list_view(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         queryset = queryset.filter(tags__in=[tag])
     
-    paginator = Paginator(queryset, 2)
+    paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     try:
         queryset = paginator.page(page)

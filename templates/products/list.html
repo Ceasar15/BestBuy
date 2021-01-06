@@ -218,19 +218,19 @@
             </div>
             {% endfor %}
 
-
+            <!-- {% if is_paginated %} -->
 
           <nav>
-            {% if is_paginated %}
+            
             <ul class="pagination">
-            {% if page_obj.has_previous %}
+            {% if page.has_previous page=object_list %}
               <li>
                 <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
                   <span aria-hidden="true">Previous <i class="ion-ios-arrow-left"></i></span>
                 </a>
               </li>
               {% endif %}
-              {% if page_obj.has_next %}
+              {% if page.has_next %}
               <li>
                 <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
                   <span aria-hidden="true"><i class="ion-ios-arrow-right"></i> Next</span>
@@ -238,8 +238,9 @@
               </li>
               {% endif %}
             </ul>
-            {% endif %}
+            <!-- {% endif %} -->
           </nav>
+
         </div>
         <!-- /// -->
       </div>
