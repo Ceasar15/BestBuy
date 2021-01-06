@@ -208,9 +208,10 @@
     <section class="products">
         <div class="container">
             <h1 class="h3">Recommendation for loop you</h1>
-            {% for obj in object_list %}
+            
             <div class="row">
               <div class="col-sm-6 col-md-3 product">
+                {% for obj in object_list %}
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
                 <a href='{{ obj.get_absolute_url }}'><img src="{{ obj.image.url }}" alt="HP {{ obj.slug }}"/></a>
 
@@ -224,7 +225,6 @@
                 </div>
               </div>
             </div>
-            {% endfor %}
         </div>
     </section>
     <br><br>
