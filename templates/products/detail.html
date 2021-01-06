@@ -219,7 +219,6 @@
                   <a href="{{ sim.get_absolute_url }}"><h1 class="h4">{{ sim.title }}</h1></a> 
                   <p class="price">$ {{sim.price}}</p>
                   <label>{{ sim.category }}</label>
-
                   <a href="{{ sim.get_absolute_url }}" class="btn btn-link"> Details</a>
                   <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                   <form action="{% url 'cart:cart_add' sim.id %}" method="post">
