@@ -131,9 +131,8 @@ class Product(models.Model):
     def get_absolute_url(self):
         return "{id}/{slug}/".format(id=self.id,slug=self.slug)
 
-    def get_related_posts_by_tags(self):
+    def get_related_products_by_tags(self):
         return Product.objects.filter(tags__in=self.tags.all())
-
 
     def __str__(self):
         return self.title

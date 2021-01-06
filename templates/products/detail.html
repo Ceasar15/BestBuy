@@ -210,7 +210,7 @@
             <h1 class="h3">Recommendation for loop you</h1>
             
             <div class="row">
-              {% for sim in instance.get_related_posts_by_tags %}
+              {% for sim in instance.get_related_products_by_tag %}
               <div class="col-sm-6 col-md-3 product">
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
                 <a href='{{ sim.get_absolute_url }}'><img src="{{ sim.image.url }}" alt="HP {{ sim.slug }}"/></a>
