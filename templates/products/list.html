@@ -219,7 +219,25 @@
             {% endfor %}
             
             <!-- Included Pagination -->
-            {% include 'pagination.html' with page=posts %}
+            <!-- {% include 'pagination.html' with page=object_list %} -->
+            <nav>            
+                <ul class="pagination">
+                  <li>
+                    {% if object_list.has_previous %}
+                    <a href="?page={{ object_list.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">Previous <i class="ion-ios-arrow-left"></i></span>
+                    </a>
+                    {% endif %}
+                  </li>
+                <li>
+                    {% if object_list.has_next %}
+                    <a href="?page={{ object_list.next_page_number }}" aria-label="Next">
+                      <span aria-hidden="true"><i class="ion-ios-arrow-right"></i> Next</span>
+                    </a>
+                    {% endif %}
+                </li>
+                </ul>
+            </nav>
         </div>
         <!-- /// -->
       </div>

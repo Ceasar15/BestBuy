@@ -79,17 +79,16 @@ def product_list_view(request, tag_slug=None):
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     try:
-        posts = paginator.page(page)
+        queryset = paginator.page(page)
     except PageNotAnInteger:
-        posts = paginator.page(1)
+        queryset = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
+        queryset = paginator.page(paginator.num_pages)
     context = {
         'object_list': queryset,
         'cart_product_form': cart_product_form,
         'tag': tag,
         'page': page,
-        'posts': posts,
     }
     return render(request, "products/list.html", context)
 
