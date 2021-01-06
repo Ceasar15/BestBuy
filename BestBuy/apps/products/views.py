@@ -156,7 +156,7 @@ class ProductDetailSlugView(DetailView):
 def product_detail_view(request, slug, *args, **kwargs):
     queryset = Product.objects.all()
     cart_product_form = CartAddProductForm()
-    instance = Product.objects.get(slug=slug, active=True)
+    instance = get_object_or_404(Product, slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
     
