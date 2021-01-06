@@ -222,6 +222,11 @@
 
                   <a href="{{ sim.get_absolute_url }}" class="btn btn-link"> Details</a>
                   <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
+                  <form action="{% url 'cart:cart_add' obj.id %}" method="post">
+                    {% csrf_token %}
+                    {{ cart_product_form }}
+                    <input class="btn btn-primary btn-rounded btn-sm" type="submit" value="Add to Cart">
+                  </form>
                 </div>
               </div>
               {% endfor %}
