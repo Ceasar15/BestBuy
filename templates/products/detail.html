@@ -216,8 +216,8 @@
                 <a href='{{ sim.get_absolute_url }}'><img src="{{ sim.image.url }}" alt="HP {{ sim.slug }}"/></a>
 
                 <div class="content">
-                  <h1 class="h4">{{ sim.title }}</h1>
-                  <p class="price">{{ sim.price }}</p>
+                  <a href="{{ sim.get_absolute_url }}"><h1 class="h4">{{ sim.title }}</h1></a> 
+                  <p class="price">$ {{sim.price}}</p>
                   <label>{{ sim.category }}</label>
 
                   <a href="{{ sim.get_absolute_url }}" class="btn btn-link"> Details</a>
