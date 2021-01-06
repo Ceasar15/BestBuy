@@ -159,11 +159,8 @@ def product_detail_view(request, slug, *args, **kwargs):
     instance = get_object_or_404(Product, slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
-    
-    #product_tags_ids = instance.tags.values_list('id', flat=True)
-    #similar_products = Product.objects.filter(tags__in=product_tags_ids).exclude(id=instance.id)
-    #similar_products = similar_products.annotate(same_tags=Count('tags')).order_by('-same_tags', '-created_on')[:4]
     similar_products = instance.tags.similar_objects()[:2]
+    
     context = {
         'object': instance,
         'object_list': queryset,
