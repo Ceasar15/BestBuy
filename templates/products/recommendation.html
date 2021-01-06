@@ -1,0 +1,26 @@
+
+{% block sidebar%}
+    <section class="products">
+        <div class="container">
+            <h1 class="h3">Recommendation for you</h1>
+            {% for obj in object_list %}
+            <div class="row">
+              <div class="col-sm-6 col-md-3 product">
+                <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                <a href='{{ obj.get_absolute_url }}'><img src="{{ obj.image.url }}" alt="HP {{ obj.slug }}"/></a>
+
+                <div class="content">
+                  <h1 class="h4">{{ obj.title }}</h1>
+                  <p class="price">{{ obj.price }}</p>
+                  <label>{{ obj.category }}</label>
+
+                  <a href="{{ obj.get_absolute_url }}" class="btn btn-link"> Details</a>
+                  <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock sidebar%}
+
