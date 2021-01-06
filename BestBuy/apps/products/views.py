@@ -155,14 +155,13 @@ class ProductDetailSlugView(DetailView):
 
 def product_detail_view(request, slug, *args, **kwargs):
     queryset = Product.objects.all()
-    prods = get_object_or_404(Product, slug=slug, active=True)
     cart_product_form = CartAddProductForm()
     instance = Product.objects.get(slug=slug, active=True)
     if instance is None:
         raise Http404("Product doesn't exist")
     
-    product_tags_ids = prods.tags.values_list('id', flat=True)
-    similar_products = Product.objects.filter(tags__in=product_tags_ids).exclude(id=prods.id)
+    product_tags_ids = instance.tags.values_list('id', flat=True)
+    similar_products = Product.objects.filter(tags__in=product_tags_ids).exclude(id=instance.id)
     similar_products = similar_products.annotate(same_tags=Count('tags')).order_by('-same_tags', '-created_on')[:4]
     context = {
         'object': instance,
