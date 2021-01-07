@@ -63,7 +63,6 @@
                 </span>
               </div><!-- /input-group -->
               <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                <!-- <input class="btn btn-default btn-sm" type="submit" value="Remove"><i class="ion-trash-b"></i> -->
                 <button class="btn btn-default btn-sm"><i class="ion-trash-b"></i> Remove</button>
                 {% csrf_token %}
               </form>
