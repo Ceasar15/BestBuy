@@ -43,14 +43,14 @@
           <div class="media">
             <div class="media-left">
               <a href="{{ product.get_absolute_url }}">
-                <img class="media-object" src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="{{ product.image.url }}" alt="{{ product.slug }}"/>
               </a>
             </div>
 
             <div class="media-body">
-              <h2 class="h4 media-heading">HP Chromebook 11</h2>
-              <label>Laptops</label>
-              <p class="price">$199.99</p>
+              <h2 class="h4 media-heading">{{ product.title }}</h2>
+              <label>{{ product.category }}</label>
+              <p class="price">${{ item.price }}</p>
             </div>
             <div class="controls">
               <div class="input-group">
@@ -62,11 +62,16 @@
                   <button class="btn btn-default btn-sm" type="button" data-action="plus"><i class="ion-plus-round"></i></button>
                 </span>
               </div><!-- /input-group -->
-
-              <a href="#remove"> <i class="ion-trash-b"></i> Remove </a>
+              <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                <!-- <input class="btn btn-default btn-sm" type="submit" value="Remove"><i class="ion-trash-b"></i> -->
+                <button class="btn btn-default btn-sm"><i class="ion-trash-b"></i> Remove</button>
+                {% csrf_token %}
+              </form>
             </div>
           </div>
         </div>
+        {% endwith %}
+        {% endfor %}
 
         <div class="checkout container-fluid">
           <div class="row">
