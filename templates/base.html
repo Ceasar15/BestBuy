@@ -26,7 +26,17 @@
   <body>
     <div class="cart" data-toggle="inactive">
       <div class="label">
-        <i class="ion-bag"></i> 7
+        {% with total_items=cart|length %}
+        {% if total_items > 0 %}
+          <p>
+            <i class="ion-bag"></i>{{ total_items }}
+          </p> 
+        {% else %}
+        <p>
+          <i class="ion-bag"></i>0
+        </p>
+        {% endif %}
+      {% endwith %}
       </div>
 
       <div class="overlay"></div>
