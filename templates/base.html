@@ -45,6 +45,7 @@
                 <img class="media-object" src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
+
             <div class="media-body">
               <h2 class="h4 media-heading">HP Chromebook 11</h2>
               <label>Laptops</label>
@@ -70,17 +71,24 @@
           <div class="row">
             <div class="col-xs-3 col-sm-2">
               <div>
-                <p>Subtotal:</p>
+                {% with total_items=cart|length %}
+                  {% if total_items > 0 %}
+                  <p>Subtotal:
+                  </p> 
                 <h3 class="h4">Total:</h3>
               </div>
             </div>
             <div class="col-xs-3 col-sm-4">
               <div class="total">
-                <p>${{ cart.get_total_price }}</p>
+                <p>{{ total_items }} item{{ total_items|pluralize }}</p>
+                  {% else %}
+                  <p>Your Cart is Empty</p>
+                  {% endif %}
+                {% endwith %}
                 <h3 class="h4">${{ cart.get_total_price }}</h3>
               </div>
             </div>
-
+            
             <div class="col-xs-6 col-sm-6">
               <a class="btn btn-primary" href="{% url 'orders:order_create' %}"><i class="ion-android-checkbox-outline"></i>&nbsp;&nbsp; Checkout order </a>
             </div>
