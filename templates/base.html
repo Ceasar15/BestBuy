@@ -38,10 +38,11 @@
         </div>
 
         <div class="content">
-
+          {% for item in cart %}
+            {% with product=item.product%}
           <div class="media">
             <div class="media-left">
-              <a href="#">
+              <a href="{{ product.get_absolute_url }}">
                 <img class="media-object" src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
