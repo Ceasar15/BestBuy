@@ -76,13 +76,13 @@
             </div>
             <div class="col-xs-3 col-sm-4">
               <div class="total">
-                <p>$1 200</p>
-                <h3 class="h4">$1 200</h3>
+                <p>${{ cart.get_total_price }}</p>
+                <h3 class="h4">${{ cart.get_total_price }}</h3>
               </div>
             </div>
 
             <div class="col-xs-6 col-sm-6">
-              <a class="btn btn-primary" href="../checkout/"> Checkout order </a>
+              <a class="btn btn-primary" href="{% url 'orders:order_create' %}"> Checkout order </a>
             </div>
           </div>
         </div>
