@@ -42,7 +42,7 @@
                                   {{ item.update_quantity_form.quantity }}
                                   {{ item.update_quantity_form.override }}
                                   <button class="btn btn-default btn-sm"><i class="ion-ios-cart"></i> Update</button>
-                                    <!-- <input class="btn btn-default btn-sm" type="submit" value="Update"> -->
+                                  
                                 </form>                  
                                 <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                                   <!-- <input class="btn btn-default btn-sm" type="submit" value="Remove"><i class="ion-trash-b"></i> -->
@@ -104,11 +104,11 @@
 
                     <p>Pay your order in the most convenient way</p>
                     <div class="payment-icons">
-                      <img src="../assets/img/payments/icon-paypal.svg" alt="paypal">
-                      <img src="../assets/img/payments/icon-visa.svg" alt="visa">
-                      <img src="../assets/img/payments/icon-mc.svg" alt="mc">
-                      <img src="../assets/img/payments/icon-discover.svg" alt="discover">
-                      <img src="../assets/img/payments/icon-ae.svg" alt="ae">
+                      <img src="{% static 'img/payments/icon-paypal.svg' %}" alt="paypal">
+                      <img src="{% static 'img/payments/icon-visa.svg' %}" alt="visa">
+                      <img src="{% static 'img/payments/icon-mc.svg' %}" alt="mc">
+                      <img src="{% static 'img/payments/icon-discover.svg' %}" alt="discover">
+                      <img src="{% static 'img/payments/icon-ae.svg' %}" alt="ae">
                     </div>
                   </div>
                 </div>
