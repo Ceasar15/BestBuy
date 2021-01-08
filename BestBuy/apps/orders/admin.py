@@ -21,4 +21,4 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
 def export_to_csv(modeladmin, request, queryset):
-    
+    opts = modeladmin.model._meta
