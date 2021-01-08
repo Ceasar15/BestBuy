@@ -14,3 +14,21 @@
         &rsaquo; Detail
     </div>
 {% endblock %}
+
+{% block content %}
+
+    <h1>Order {{ order.id }}</h1>
+    <ul class="object-tools">
+        <li>
+            <a href="#" onclick="window.print();">Print order</a>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <th>Created</th>
+            <td>{{ order.created }}</td>
+        </tr>
+        <tr>
+
+
+{% endblock %}
