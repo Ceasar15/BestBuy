@@ -23,4 +23,6 @@ class OrderAdmin(admin.ModelAdmin):
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     content_disposition = 'attachment; filename={opts.verbose_name}.csv'
-    
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = content_disposition
+    writer = csv.writer(response)
