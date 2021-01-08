@@ -25,8 +25,8 @@ def export_to_csv(modeladmin, request, queryset):
             value = getattr(obj, field.name)
             if isinstance(value, datetime.datetime):
                 value = value.strftime('%d/%m/%Y')
-                data_row.append(value)
-                writer.writerow(data_row)
+            data_row.append(value)
+        writer.writerow(data_row)
     return response
 
 export_to_csv.short_description = 'Export to CSV'
