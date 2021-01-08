@@ -1,9 +1,12 @@
 from django.http import request
 from django.shortcuts import render
+from django.contrib.admin.views.decorators import staff_member_required
+
 from .models import OrderItem
 from .forms import OrderCreateForm
 from apps.cart.cart import Cart
 from .tasks import order_created
+
 
 def order_create(request):
     cart = Cart(request)
