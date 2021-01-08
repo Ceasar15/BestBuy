@@ -8,6 +8,9 @@ from apps.cart.cart import Cart
 from .tasks import order_created
 
 
+@staff_member_required
+def
+
 def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
