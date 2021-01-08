@@ -10,6 +10,10 @@ from .models import Order, OrderItem
 
 # Register your models here.
 
+def order_detail(obj):
+    url = reverse('orders:admin_order_detail', args=[obj.id])
+    return mark_safe(f'<a href="{url}">View</a>')
+
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     content_disposition = 'attachment; filename={opts.verbose_name}.csv'
@@ -32,23 +36,14 @@ def export_to_csv(modeladmin, request, queryset):
 
 export_to_csv.short_description = 'Export to CSV'
 
-
-
-
-
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
 
-
-def order_detail(obj):
-    url = reverse('orders:admin_order_detail', args=[obj.id])
-    return mark_safe(f'<a href="{url}">View</a>')
-
 @admin.register(Order)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'email', 'paid', 'country', 'postal_code', 'city', 'street' , 'building', 'created', 'updated', 'order_detail']
+    list_display = ['id', 'first_name', 'last_name', 'email', 'paid', 'country', 'postal_code', 'city', 'street' , 'building', 'created', 'updated', order_detail]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
     actions = [export_to_csv]
