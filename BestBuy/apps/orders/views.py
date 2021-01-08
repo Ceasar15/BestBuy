@@ -8,7 +8,10 @@ from .forms import OrderCreateForm
 from apps.cart.cart import Cart
 from .tasks import order_created
 
-
+@staff_member_required
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'admin/orders//order/detail.html', {'order': order})
 
 def order_create(request):
     cart = Cart(request)
