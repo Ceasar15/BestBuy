@@ -18,3 +18,5 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'last_name', 'email', 'paid', 'country', 'postal_code', 'city', 'street' , 'building', 'created', 'updated']
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
+
+def export_to_csv():
