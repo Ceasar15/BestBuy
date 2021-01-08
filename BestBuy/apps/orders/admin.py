@@ -2,6 +2,7 @@ import csv
 import datetime
 from django.contrib import admin
 from django.http import HttpResponse
+from django.http import request
 
 
 from .models import Order, OrderItem
@@ -19,4 +20,5 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
 
-def export_to_csv():
+def export_to_csv(modeladmin, request, queryset):
+    
