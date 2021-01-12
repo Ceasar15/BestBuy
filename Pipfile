@@ -16,6 +16,8 @@ kombu = "*"
 flower = "==0.9.3"
 django-taggit = "==1.2.0"
 weasyprint = "==51"
+django-rosetta = "*"
+django-parler = "==2.0.1"
 
 [dev-packages]
 
