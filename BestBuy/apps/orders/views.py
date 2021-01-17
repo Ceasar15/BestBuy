@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+import weasyprint
 
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
