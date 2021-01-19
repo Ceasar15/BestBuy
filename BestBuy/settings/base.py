@@ -68,6 +68,7 @@ LOCAL_APPS = (
     'apps.products',
     'apps.cart',
     'apps.orders',
+    'apps.coupons',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
