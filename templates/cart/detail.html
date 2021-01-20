@@ -86,15 +86,37 @@
                         </div>
                     </div>
                     <hr>
-
+                    <div class="checkboxes">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                              Promotional Codes
+                          </label>
+                          <hr class="offset-xs">
+  
+                          <div class="input-group">
+                              <input type="text" class="form-control input-sm" placeholder="Insert code">
+                              <span class="input-group-btn">
+                              <button class="btn btn-primary btn-sm" type="button">Apply</button>
+                              </span>
+                          </div><!-- /input-group -->
+                          <hr class="offset-sm">
+                      </div>
+                      <div class="radio">
+                          <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                          Coupon
+                          </label>
+                      </div>
+                  </div>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <h3 class="no-margin">Total sum</h3>
-                            </div>
-                            <div class="col-xs-6">
-                                <h3 class="no-margin">${{ cart.get_total_price }}</h3>
-                            </div>
+                          <div class="col-xs-6">
+                            <h3 class="no-margin">Total sum</h3>
+                          </div>
+                          <div class="col-xs-6">
+                            <h3 class="no-margin">${{ cart.get_total_price }}</h3>
+                          </div>
                         </div>
                     </div>
                     <hr class="offset-md">
