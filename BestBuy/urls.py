@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('apps.cart.urls', namespace='cart')),
     path('orders/', include('apps.orders.urls', namespace='orders') ),
-    path('coupons/', include('coupons.urls', namespace='coupons')),
+    path('coupons/', include('apps.coupons.urls', namespace='coupons')),
     url('products/',include('apps.products.urls')),
     url('users/', include('apps.users.urls')),
     path('', views.home, name='home' ),
