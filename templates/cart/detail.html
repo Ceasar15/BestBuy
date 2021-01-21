@@ -86,39 +86,47 @@
                         </div>
                     </div>
                     <hr>
+                    <form action="{% url "coupons:apply" %}" method="post">
+                      {% csrf_token %}
                     <div class="checkboxes">
                       <div class="radio">
-                          <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                              Promotional Codes
+                          <label for='id_code'>
+                              <!-- <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> -->
+                              Coupon
                           </label>
                           <hr class="offset-xs">
   
                           <div class="input-group">
-                              <input type="text" class="form-control input-sm" placeholder="Insert code">
+                              <input id="id_code" type="text" class="form-control input-sm" name="code" placeholder="Insert code">
                               <span class="input-group-btn">
-                              <button class="btn btn-primary btn-sm" type="button">Apply</button>
+                              <button class="btn btn-primary btn-sm" type="submit">Apply</button>
                               </span>
                           </div><!-- /input-group -->
                           <hr class="offset-sm">
                       </div>
-                      <div class="radio">
+                      <!-- <div class="radio">
                           <label>
                           <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                           Coupon
                           </label>
-                      </div>
+                      </div> -->
                   </div>
+                  </form>
                     <div class="container-fluid">
                         <div class="row">
+                          {% if cart.coupon %}
                           <div class="col-xs-6">
-                            <h3 class="no-margin">Total sum</h3>
-                            <h3 class="no-margin">Discount</h3>
+                            <h3 class="no-margin">Discount Code: </h3>
+                            <h3 class="no-margin">Discount: </h3>
+                            <h3 class="no-margin">Total sum: </h3>
                           </div>
                           <div class="col-xs-6">
-                            <h3 class="no-margin">${{ cart.get_total_price }}</h3>
-                            <h3 class="no-margin">${{ cart.get_total_price }}</h3>
+                            <h3 class="no-margin">'{{ cart.coupon.code }}' </h3>
+                            <h3 class="no-margin">{{ cart.coupon.discount }}% </h3>
+                            {% endif %}
+                            <h3 class="no-margin">${{ cart.get_total_price_after_discount|floatformat:3 }}</h3>
                           </div>
+                         
                         </div>
                     </div>
                     <hr class="offset-md">

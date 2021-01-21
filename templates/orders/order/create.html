@@ -508,12 +508,14 @@
                             <p>Your Cart is Empty</p>
                             {% endif %}
                         {% endwith %}
-                            <p>Discount</p>
-                            <p>Delivery</p>
+                        {% if cart.coupon %}
+                            <p>Discount: {{ cart.coupon.code }} </p>
+                            <p>Delivery: </p>
                         </div>
                         <div class="col-xs-6">
                             <p><b>${{ cart.get_total_price }}</b></p>
-                            <p><b>$0</b></p>
+                            <p><b> {{ cart.coupon.discount}}% </b></p>
+                        {% endif %}
                             <p><b>$0</b></p>
                         </div>
                     </div>
@@ -550,7 +552,7 @@
                             <h3 class="no-margin">Total sum</h3>
                         </div>
                         <div class="col-xs-6">
-                            <h3 class="no-margin">${{ cart.get_total_price }}</h3>
+                            <h3 class="no-margin">${{ cart.get_total_price_after_discount|floatformat:2 }}</h3>
                         </div>
                     </div>
                 </div>
