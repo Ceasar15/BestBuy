@@ -288,4 +288,3 @@ CART_SESSION_ID = 'cart'
 
 TAGGIT_CASE_INSENSITIVE = True
 
-ffffffffffffffffff
