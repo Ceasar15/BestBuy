@@ -30,9 +30,8 @@
           <label class="btn btn-default btn-xs">
             <a href="{% url 'product_list_by_tag' tag.slug %}">{{ tag }}</a> 
           </label>          
-           {% endfor %}
           {% if not forloop.last %}, {% endif %}
-           
+            {% endfor %}
           {% endfor %}
         </div>
     </div>
