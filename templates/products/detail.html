@@ -81,10 +81,10 @@
             <p> &middot; {{ object.operating_system }}™</p>
             <p> &middot; {{ object.processor }}1920 1280</p>
             <p> &middot; {{ object.graphics }}</p>
+            <p> &middot; {{ object.tags.all|join:", " }}</p>
 
             <p class="price">${{object.price}}</p>
             <p class="price through">$249.99</p>
-            <p class="price">{{ object.tags.all|join:", " }}</p>
             <br><br>
             <form action="{% url 'cart:cart_add' product_id=object.id %}" method="post">
               {% csrf_token %}
