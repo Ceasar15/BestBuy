@@ -84,6 +84,7 @@
 
             <p class="price">${{object.price}}</p>
             <p class="price through">$249.99</p>
+            <p class="price">{{ object.tags.all|join:", " }}</p>
             <br><br>
             <form action="{% url 'cart:cart_add' product_id=object.id %}" method="post">
               {% csrf_token %}
@@ -210,7 +211,7 @@
             <h1 class="h3">Recommendation for you.</h1>
             
             <div class="row">
-              {% for sim in similar_products %}
+              {% for sim in similar_products %} 
               <div class="col-sm-6 col-md-3 product">
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
                 <a href='{{ sim.get_absolute_url }}'><img src="{{ sim.image.url }}" alt="HP {{ sim.slug }}"/></a>
