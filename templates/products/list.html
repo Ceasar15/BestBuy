@@ -26,9 +26,10 @@
             <a href="{% url 'products_list' %}">All Products</a>
           </label>
           {% for obj in object_list %}
-            {% for tag|join:", " in obj.tags.all  %}
+            {% obj|join:", "%}
+            {% for tag in obj.tags.all  %}
           <label class="btn btn-default btn-xs">
-            <a href="{% url 'product_list_by_tag' tag.slug %}">{{ tag }}</a> 
+            <a href="{% url 'product_list_by_tag' tag.slug %}">{{ tag.name }}</a> 
           </label>          
           {% if not forloop.last %}, {% endif %}
             {% endfor %}
