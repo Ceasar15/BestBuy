@@ -34,8 +34,7 @@ path.append(DJANGO_ROOT)
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = False
 
-import django
-django.setup()
+
 
 
 ########## APP CONFIGURATION

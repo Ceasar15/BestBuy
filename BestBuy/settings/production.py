@@ -1,5 +1,6 @@
 """Production settings and globals."""
 
+from .base import *
 
 from os import environ
 
@@ -8,7 +9,7 @@ from postgresify import postgresify
 import dj_database_url
 
 
-from .base import *
+
 from .database import *
 
 ########## DATABASE CONFIGURATION
