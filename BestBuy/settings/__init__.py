@@ -1,5 +1,5 @@
-import django 
-django.setup()
+# import django 
+# django.setup()
 
 
 from .base import *
