@@ -137,7 +137,7 @@ MEDIA_URL = '/media/'
 
 ########## STATIC FILE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = normpath(join(DJANGO_ROOT, 'static'))
+STATIC_ROOT = normpath(join(DJANGO_ROOT, 'staticfiles'))
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
@@ -145,7 +145,7 @@ STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    normpath(join(DJANGO_ROOT, 'staticfiles')),
+    normpath(join(DJANGO_ROOT, 'static')),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -290,4 +290,4 @@ CART_SESSION_ID = 'cart'
 TAGGIT_CASE_INSENSITIVE = True
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
