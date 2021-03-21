@@ -2,6 +2,7 @@
 Base Settings and Globals
 """
 
+import django_heroku
 from datetime import timedelta
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
@@ -59,7 +60,7 @@ THIRD_PARTY_APPS = (
     #'south',
 
     # Static file management:
-    'compressor',
+    #'compressor',
 )
 
 LOCAL_APPS = (
@@ -224,33 +225,33 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-    'require_debug_false': {
-        '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins', 'console'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'filters': {
+#     'require_debug_false': {
+#         '()': 'django.utils.log.RequireDebugFalse'
+#         }
+#     },
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'filters': ['require_debug_false'],
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler'
+#         }
+#     },
+#     'loggers': {
+#         'django.request': {
+#             'handlers': ['mail_admins', 'console'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#     }
+# }
 ########## END LOGGING CONFIGURATION
 
 
@@ -288,3 +289,5 @@ CART_SESSION_ID = 'cart'
 
 TAGGIT_CASE_INSENSITIVE = True
 
+
+django_heroku.settings(locals())
