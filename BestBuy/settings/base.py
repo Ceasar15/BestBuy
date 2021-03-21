@@ -7,6 +7,9 @@ from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 import os
 
+import django
+django.setup()
+
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
