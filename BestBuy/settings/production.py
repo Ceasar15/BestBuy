@@ -54,7 +54,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 ########## STORAGE CONFIGURATION
 # See: http://django-storages.readthedocs.org/en/latest/index.html
 INSTALLED_APPS += (
-    'storages',
+    #'storages',
 )
 
 ########## COMPRESSION CONFIGURATION
