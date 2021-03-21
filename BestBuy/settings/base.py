@@ -2,11 +2,9 @@
 Base Settings and Globals
 """
 
-
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 import os
-
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
