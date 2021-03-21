@@ -22,6 +22,7 @@ Django==3.1.5
 django-appconf==1.0.4
 django-celery==3.3.1
 django-compressor==2.4
+django-heroku==0.3.1
 django-heroku-memcacheify==1.0.0
 django-heroku-postgresify==0.4
 django-parler==2.0.1
@@ -42,6 +43,7 @@ pep517==0.8.2
 Pillow==8.0.1
 polib==1.1.0
 progress==1.5
+psycopg2==2.8.6
 pycparser==2.20
 Pygments==2.7.2
 pylibmc==1.6.1
