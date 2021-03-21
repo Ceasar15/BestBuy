@@ -46,11 +46,6 @@ DATABASES = {
 # DATABASES = { 'default': dj_database_url.config( default=config('DATABASE_URL') ) }
 #DATABASES['default'] = dj_database_url.config(default= 'sqlite:////BASE_DIR/db.sqlite3', conn_max_age=600)
 
-##### SOUTH DATABASE
-# SOUTH_DATABASE_ADAPTERS = {
-#     'default': 'south.db.sqlite3'
-# }
-
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
