@@ -1,3 +1,7 @@
+import django 
+django.setup()
+
+
 from .base import *
 import os
 
