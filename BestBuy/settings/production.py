@@ -5,12 +5,17 @@ from os import environ
 
 from memcacheify import memcacheify
 from postgresify import postgresify
+import dj_database_url
+
 
 from .base import *
 from .database import *
 
 ########## DATABASE CONFIGURATION
-DATABASES = postgresify()
+#DATABASES = postgresify()
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 ########## END DATABASE CONFIGURATION
 
 
