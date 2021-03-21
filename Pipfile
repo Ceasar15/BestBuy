@@ -19,6 +19,7 @@ weasyprint = "==51"
 django-rosetta = "*"
 django-parler = "==2.0.1"
 gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
