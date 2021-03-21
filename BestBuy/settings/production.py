@@ -77,5 +77,5 @@ SECRET_KEY = environ.get('SECRET_KEY', SECRET_KEY)
 
 ########## ALLOWED HOSTS CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['.herokuapp.com', 'bestbuy.com']
+ALLOWED_HOSTS = ['sellaptop.herokuapp.com', 'bestbuy.com']
 ########## END ALLOWED HOST CONFIGURATION
