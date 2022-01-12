@@ -57,11 +57,13 @@ class ProductFeaturedDetailView(DetailView):
 def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
-    
+    for ss in queryset:
+        print(dir(ss))
+
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        queryset = queryset.filter(tags__in=[tag])
+        queryset = queryset.filter(tags__name__in=[tag])
     
     paginator = Paginator(queryset, 9)
     page = request.GET.get('page')
