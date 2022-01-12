@@ -24,13 +24,6 @@ def home(request):
     }
     return render(request, template, context)
 
-class HomeView(ListView):
-    template_name = 'home.html'
-
-    def get_queryset(self, *args, **kwargs):
-        request = self.request
-        return Product.objects.all().active()
-
 
 def contact(request):
     template = 'contact.html'
