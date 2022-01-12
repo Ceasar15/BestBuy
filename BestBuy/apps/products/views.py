@@ -57,11 +57,14 @@ class ProductFeaturedDetailView(DetailView):
 def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
+    tagv = [] 
     for ss in queryset:
-        # print(dir(ss))
-        for s in ss.tags.order_by().values_list('name', flat=True).distinct():
-            # print(dir(s))
-            print(s)
+        for s in ss.tags.order_by('name').values_list('name', flat='true').distinct():
+            tagv.append(s)
+
+    for a in tagv:
+        print("aaaa", a)
+
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
@@ -80,6 +83,7 @@ def product_list_view(request, tag_slug=None):
         'cart_product_form': cart_product_form,
         'tag': tag,
         'page': page,
+        's': s
     }
     return render(request, "products/list.html", context)
 
