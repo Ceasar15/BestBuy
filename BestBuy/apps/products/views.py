@@ -17,8 +17,6 @@ def home(request):
     template = 'home.html'
     queryset = Product.objects.all().order_by('-created_on').active()
 
-    for q in queryset:
-        print(q.get_absolute_url)
     context = {
         'object_list': queryset
     }
