@@ -147,8 +147,10 @@
           <a href='{{ obj.get_absolute_url }}'> <img src="{{ obj.image.url }}" alt="{{ obj.slug }}"/></a>
 
           <div class="content">
-            <a href ='products/products/{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
-            <p class="price">${{ obj.price }}</p>
+            <a href ='products/products/{{ obj.get_absolute_url }}' >
+              <h1 class="h4">{{ obj.title }}</h1>
+            </a>
+            <p class="price">${{obj.price}}</p>
             <label>{{obj.category}}</label>
 
 
@@ -163,35 +165,7 @@
         </div>
         {% endfor %}
 
-       <div class="col-sm-6 col-md-4 product">
-          <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-          <a href="./"><img src="{% static 'img/products/surface-pro.jpg' %}" alt="Surface Pro"/></a>
-
-          <div class="content">
-            <h1 class="h4">Surface Pro</h1>
-            <p class="price">$199.99</p>
-            <label>Hybrid</label>
-
-            <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-            <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 product">
-          <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-          <a href="./"><img src="{% static 'img/products/lenovo-yoga.jpg' %}" alt="Lenovo Yoga"/></a>
-
-          <div class="content">
-            <h1 class="h4">Lenovo Yoga</h1>
-            <p class="price">$199.99</p>
-            <label>Hybrid</label>
-
-            <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-            <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 product">
+        {% comment %} <div class="col-sm-6 col-md-4 product">
           <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
           <a href="./"><img src="{% static 'img/products/asus-transformer.jpg' %}" alt="ASUS Transformer"/></a>
 
@@ -203,7 +177,7 @@
             <a href="../catalog/product.html" class="btn btn-link"> Details</a>
             <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
           </div>
-        </div>
+        </div> {% endcomment %}
 
         <div class="col-sm-6 col-md-4 product hidden-md hidden-lg">
           <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
