@@ -19,7 +19,8 @@ def home(request):
     queryset = Product.objects.all().order_by('-created_on').active()
 
     context = {
-        'object_list': queryset
+        'object_list': queryset,
+        'cart_product_form': cart_product_form,
     }
     return render(request, template, context)
 
