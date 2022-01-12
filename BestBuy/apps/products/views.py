@@ -59,7 +59,7 @@ def product_list_view(request, tag_slug=None):
     cart_product_form = CartAddProductForm()
     tagv = [] 
     for ss in queryset:
-        for s in ss.tags.order_by('name').values_list('name', flat='true').distinct():
+        for s in ss.tags.order_by('name').distinct():
             tagv.append(s)
 
     for a in tagv:
