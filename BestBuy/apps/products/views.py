@@ -110,10 +110,6 @@ class ProductDetailSlugView(DetailView):
         return instance
 
 
- 
-
-
-
 def product_detail_view(request, slug, *args, **kwargs):
     queryset = Product.objects.all()
     cart_product_form = CartAddProductForm()
