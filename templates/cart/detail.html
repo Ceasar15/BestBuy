@@ -39,12 +39,7 @@
                               <div class="input-group">
                                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
                                   {% csrf_token %}
-                                  {% comment %} {{ item.update_quantity_form.quantity }} {% endcomment %}
-                                  {% comment %} <div class="col-xs-9"> {% endcomment %}
-                                    {% comment %} <input class="form-control" id="ex1" type="text"> {% endcomment %}
-                                    <input class="btn btn-default btn-sm" type="number" name="quantity" max="20" min="1" >
-                                  {% comment %} </div> {% endcomment %}
-
+                                  {{ item.update_quantity_form.quantity }}
                                   {{ item.update_quantity_form.override }}
                                   <button class="btn btn-default btn-sm"><i class="ion-ios-cart"></i> Update</button>
                                   
