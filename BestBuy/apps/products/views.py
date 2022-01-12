@@ -15,6 +15,7 @@ from apps.cart.forms import CartAddProductForm
 
 def home(request):
     template = 'home.html'
+    cart_product_form = CartAddProductForm()
     queryset = Product.objects.all().order_by('-created_on').active()
 
     context = {
