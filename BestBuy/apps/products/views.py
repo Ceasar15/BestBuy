@@ -15,7 +15,22 @@ from apps.cart.forms import CartAddProductForm
 
 def home(request):
     template = 'home.html'
-    return render(request, template)
+    queryset = Product.objects.all().order_by('-created_on').active()
+
+    for q in queryset:
+        print(q.get_absolute_url)
+    context = {
+        'object_list': queryset
+    }
+    return render(request, template, context)
+
+class HomeView(ListView):
+    template_name = 'home.html'
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.all().active()
+
 
 def contact(request):
     template = 'contact.html'
@@ -66,8 +81,6 @@ class ProductFeaturedDetailView(DetailView):
 #         request = self.request
 #         return Product.objects.all()
 
-#
-# DSFMDOFMDSF DFSDMFISDMFSD FSDKF MSDFMOSDF SDFSMDFOMS
 
 def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
