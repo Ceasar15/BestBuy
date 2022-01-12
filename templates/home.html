@@ -126,7 +126,7 @@
           </a>
           <br><br>
           
-          <a href="#">Products gallery</a>
+          <a href="{% url 'products_list' %}">Products gallery</a>
         </div>
       </div>
     </div>
@@ -151,8 +151,7 @@
             <p class="price">${{ obj.price }}</p>
             <label>{{obj.category}}</label>
 
-            {% comment %} <a href="../catalog/product.html" class="btn btn-link"> Details</a>
-            <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> {% endcomment %}
+
             <form action="{% url 'cart:cart_add' obj.id %}" method="post">
               {% csrf_token %}
               {{ cart_product_form }}
