@@ -58,8 +58,10 @@ def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
     for ss in queryset:
-        print(dir(ss))
-
+        # print(dir(ss))
+        for s in ss.tags.order_by().values_list('name', flat=True).distinct():
+            # print(dir(s))
+            print(s)
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
