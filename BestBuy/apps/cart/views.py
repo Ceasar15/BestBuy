@@ -11,7 +11,9 @@ from .forms import CartAddProductForm
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
-    print(cart)
+    # print(dir(cart))
+    # for c in cart:
+    #     print(c)
     product = get_object_or_404(Product, id=product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
