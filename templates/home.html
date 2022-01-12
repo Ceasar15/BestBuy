@@ -147,9 +147,7 @@
           <a href='{{ obj.get_absolute_url }}'> <img src="{{ obj.image.url }}" alt="{{ obj.slug }}"/></a>
 
           <div class="content">
-            <a href ='products/products/{{ obj.get_absolute_url }}' >
-              <h1 class="h4">{{ obj.title }}</h1>
-            </a>
+            <h1 class="h4">{{ obj.title }}</h1>
             <p class="price">${{obj.price}}</p>
             <label>{{obj.category}}</label>
 

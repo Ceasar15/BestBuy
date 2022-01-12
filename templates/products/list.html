@@ -204,14 +204,16 @@
               <a href='{{ obj.get_absolute_url }}'> <img src="{{ obj.image.url }}" alt="{{ obj.slug }}"/></a>
     
               <div class="content">
-                <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
+                <h1 class="h4">{{ obj.title }}</h1>
                 <p class="price">${{ obj.price }}</p>
                 <label>{{obj.category}}</label>
 
                 <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                 <form action="{% url 'cart:cart_add' obj.id %}" method="post">
                   {% csrf_token %}
-                  {{ cart_product_form }}
+                  {% comment %} {{ cart_product_form }} {% endcomment %}
+                  
+                  <input class="btn btn-primary btn-rounded btn-sm" type="number" name="cart" max="20" min="1" >
                   <input class="btn btn-primary btn-rounded btn-sm" type="submit" value="Add to Cart">
                 </form>
                 
