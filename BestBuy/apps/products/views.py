@@ -54,12 +54,6 @@ class ProductFeaturedDetailView(DetailView):
     template_name = "products/featured-detail.html"
 
 
-
-#     def get_queryset(self, *args, **kwargs):
-#         request = self.request
-#         return Product.objects.all()
-
-
 def product_list_view(request, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
