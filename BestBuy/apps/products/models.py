@@ -65,6 +65,9 @@ class ProductManager(models.Manager):
     def search(self, query):
         return self.get_queryset().active().search(query)
 
+    def category_filter(self, query):
+        return self.filter(category=query)
+
 
 Laptops= 'Laptops'
 Tablets = 'Tablets'

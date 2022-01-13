@@ -68,7 +68,6 @@ def product_list_view(request, cat_filter=None, tag_slug=None):
     cat_filters = Product.objects.values_list('category', flat='true')
     cat_filt = []
     for cat in cat_filters:
-        print(cat)
         cat_filt.append(cat)
     filt = Counter(cat_filt)
 
