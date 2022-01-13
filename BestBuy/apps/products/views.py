@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage
 
+from collections import Counter
 
 from taggit.models import Tag
 
@@ -54,7 +55,7 @@ class ProductFeaturedDetailView(DetailView):
     template_name = "products/featured-detail.html"
 
 
-def product_list_view(request, tag_slug=None):
+def product_list_view(request, cat_filter=None, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on').distinct()
     cart_product_form = CartAddProductForm()
     tagv = [] 
@@ -62,10 +63,20 @@ def product_list_view(request, tag_slug=None):
         for each_tag in all_tags.tags.order_by('name').distinct():
             tagv.append(each_tag)
     
-    from collections import Counter
     uniq =  Counter(tagv)
-    seacc = queryset.filter('Laptops')
-    print(seacc)
+
+
+
+    cat_filters = Product.objects.values_list('category', flat='true').distinct()
+    print(type(cat_filters))
+    cat_filt = []
+    for cat in cat_filters:
+        print(cat)
+        cat_filt.append(cat)
+    filt = Counter(cat_filt)
+    print(type(filt))
+    print("aa", filt)
+
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
@@ -87,7 +98,8 @@ def product_list_view(request, tag_slug=None):
         'cart_product_form': cart_product_form,
         'tag': tag,
         'page': page,
-        'uniq': uniq
+        'uniq': uniq,
+        'filt': filt
     }
     return render(request, "products/list.html", context)
 

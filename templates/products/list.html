@@ -49,7 +49,10 @@
               <div class="controls">
                 <div class="checkbox-group" data-status="inactive">
                     <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Laptops">Laptops</div>
+                    <div class="label" data-value="Laptops">
+                      Laptops
+                      
+                    </div>
                     <input type="checkbox" name="checkbox" value="">
                 </div>
 
@@ -217,6 +220,9 @@
                 
               </div>
             </div>
+            {% endfor %}
+            {% for cat in filt %}
+            <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
             {% endfor %}
 
             
