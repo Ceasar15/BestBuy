@@ -222,7 +222,7 @@
             </div>
             {% endfor %}
             {% for cat in filt %}
-            <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+            <a href="{% url 'product_list_by_filter' cat|lower %}">{{ cat }}</a> 
             {% endfor %}
 
             

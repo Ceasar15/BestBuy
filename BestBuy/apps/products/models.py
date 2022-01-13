@@ -43,7 +43,7 @@ class ProductQuerySet(models.query.QuerySet):
 
         return self.filter(lookups).distinct()
     
-    def cat_filter(self, query):
+    def category_filter(self, query):
         return self.filter(category=query)
         
 class ProductManager(models.Manager):

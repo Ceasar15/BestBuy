@@ -56,31 +56,29 @@ class ProductFeaturedDetailView(DetailView):
 
 
 def product_list_view(request, cat_filter=None, tag_slug=None):
-    queryset = Product.objects.all().order_by('-created_on').distinct()
+    queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
     tagv = [] 
     for all_tags in queryset:
-        for each_tag in all_tags.tags.order_by('name').distinct():
+        for each_tag in all_tags.tags.order_by('name'):
             tagv.append(each_tag)
-    
     uniq =  Counter(tagv)
 
 
-
-    cat_filters = Product.objects.values_list('category', flat='true').distinct()
-    print(type(cat_filters))
+    cat_filters = Product.objects.values_list('category', flat='true')
     cat_filt = []
     for cat in cat_filters:
         print(cat)
         cat_filt.append(cat)
     filt = Counter(cat_filt)
-    print(type(filt))
-    print("aa", filt)
 
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         queryset = queryset.filter(tags__name__in=[tag]).distinct()
+
+    if cat_filter:
+        queryset = queryset.category_filter(cat_filter)
 
     paginator = Paginator(queryset, 9)
     page = request.GET.get('page')
@@ -99,7 +97,8 @@ def product_list_view(request, cat_filter=None, tag_slug=None):
         'tag': tag,
         'page': page,
         'uniq': uniq,
-        'filt': filt
+        'filt': filt,
+
     }
     return render(request, "products/list.html", context)
 
