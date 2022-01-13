@@ -64,7 +64,7 @@ def product_list_view(request, tag_slug=None):
     
     from collections import Counter
     uniq =  Counter(tagv)
-    seacc = queryset.search('Laptops')
+    seacc = queryset.filter('Laptops')
     print(seacc)
     tag = None
     if tag_slug:

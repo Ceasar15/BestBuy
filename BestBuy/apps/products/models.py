@@ -43,7 +43,6 @@ class ProductQuerySet(models.query.QuerySet):
 
         return self.filter(lookups).distinct()
 
-
 class ProductManager(models.Manager):
     def get_queryset(self):
         return ProductQuerySet(self.model, using=self._db)
@@ -63,6 +62,9 @@ class ProductManager(models.Manager):
     def search(self, query):
         return self.get_queryset().active().search(query)
     
+    def filter(self, query):
+        return self.get_queryset().filter(category=query)
+
 
 Laptops= 'Laptops'
 Tablets = 'Tablets'
