@@ -58,8 +58,6 @@
                   </div>
                 </div>
                 {% endfor %}
-
-
               </div>
           </div>
           <br>
@@ -135,6 +133,18 @@
                   <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
                   <h1 class="h4">Manufacturer</h1>
               </div>
+              
+              {% for cat in filt %}
+              <div class="checkbox-group" data-status="inactive">
+                {% if cat in request.get_full_path%}
+                &nbsp;&nbsp;&nbsp;<i class="ion-android-done"></i>
+                {% else %}
+                {% endif %}                
+                <div class="label" data-value="{{ cat }}">
+                  &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                </div>
+              </div>
+              {% endfor %}
 
               <div class="controls">
                 <div class="checkbox-group" data-status="inactive">
