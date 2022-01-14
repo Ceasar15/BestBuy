@@ -14,10 +14,10 @@
             <i class="ion-arrow-down-b"></i> Sorting by name
           </button>
           <ul class="dropdown-menu">
-            <li class="active"><a href="#"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
-            <li><a href="#"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
-            <li><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
-            <li><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
+            <li class="active"><a href="{% url 'products_list_by_name_ascend' True %}"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
+            <li><a href="{% url 'products_list_by_name_descend' True %}"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
+            <li><a href="{% url 'products_list_by_price_ascend' True %}"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
+            <li><a href="{% url 'products_list_by_price_descend' True %}"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
           </ul>
         </div>
         <p>Search by tags</p>
@@ -122,6 +122,7 @@
             <div class="controls">
                 <br>
                 <div id="slider-price"></div>
+                <input type="text" name="min_price" maxlength="4" size="3" >
                 <br>
                 <p id="amount"></p>
             </div>

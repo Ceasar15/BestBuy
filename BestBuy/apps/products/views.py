@@ -55,7 +55,7 @@ class ProductFeaturedDetailView(DetailView):
     template_name = "products/featured-detail.html"
 
 
-def product_list_view(request, cat_filter=None, tag_slug=None):
+def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=None, price_ascend=None, price_descend=None, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
     tagv = [] 
@@ -79,6 +79,18 @@ def product_list_view(request, cat_filter=None, tag_slug=None):
     if cat_filter:
         queryset = queryset.category_filter(cat_filter)
 
+    if name_ascend:
+        queryset = queryset.order_by('title')
+
+    if name_descend:
+        queryset = queryset.order_by('-title')
+
+    if price_ascend:
+        queryset = queryset.order_by('price')
+        
+    if price_descend:
+        queryset = queryset.order_by('price')
+
     paginator = Paginator(queryset, 9)
     page = request.GET.get('page')
     try:
@@ -87,8 +99,6 @@ def product_list_view(request, cat_filter=None, tag_slug=None):
         queryset = paginator.page(1)
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
-    
-
     
     context = {
         'object_list': queryset,

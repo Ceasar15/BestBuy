@@ -144,12 +144,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-              <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
+              <li {% if 'cart' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
               <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-heart"></i> WishList </a></li>
               <li><a href="{% url 'logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
               {% else %}
-              <li><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
-              <li><a href="{% url 'sign_up' %}"><i class="ion-man"></i> Sign Up</a></li> 
+              <li {% if 'login' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
+              <li {% if 'sign_up' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'sign_up' %}"><i class="ion-man"></i> Sign Up</a></li> 
               {% endif %}
             </ul>
           </div><!--/.nav-collapse -->
