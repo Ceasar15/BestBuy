@@ -55,7 +55,7 @@ class ProductFeaturedDetailView(DetailView):
     template_name = "products/featured-detail.html"
 
 
-def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=None, price_ascend=None, price_descend=None, tag_slug=None):
+def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=None, price_ascend=None, price_descend=None, manu_filter=None, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
     tagv = [] 
@@ -71,10 +71,19 @@ def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=N
         cat_filt.append(cat)
     filt = Counter(cat_filt)
 
+    manu_filters = Product.objects.values_list('manufacturer', flat='true')
+    manu_filt = []
+    for manu in manu_filters:
+        manu_filt.append(manu)
+    filt = Counter(manu_filt)
+
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         queryset = queryset.filter(tags__name__in=[tag]).distinct()
+
+    if cat_filter:
+        queryset = queryset.category_filter(cat_filter)
 
     if cat_filter:
         queryset = queryset.category_filter(cat_filter)
