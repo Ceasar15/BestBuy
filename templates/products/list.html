@@ -47,34 +47,21 @@
               </div>
 
               <div class="controls">
-                
+                {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
                   <div class="checkbox"><i class="ion-android-done"></i></div>
                   <div class="label" data-value="Laptops">
-                    Laptops
+                    <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
                   </div>
                   <input type="checkbox" name="checkbox" value="">
-              </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Laptops">
-                      Laptops
-                    </div>
-                    <input type="checkbox" name="checkbox" value="">
                 </div>
+                {% endfor %}
 
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Tablets">Tablets</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
+                {% comment %} <div class="checkbox-group" data-status="inactive">
                     <div class="checkbox"><i class="ion-android-done"></i></div>
                      <div class="label" data-value="Hybrid">Hybrids</div>
                     <input type="checkbox" name="checkbox" value="">
-                </div>
+                </div> {% endcomment %}
               </div>
           </div>
 
@@ -228,11 +215,7 @@
                 
               </div>
             </div>
-            {% endfor %}
-            {% for cat in filt %}
-            <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
-            {% endfor %}
-
+        
             
             <!-- Included Pagination -->
             <nav>            
