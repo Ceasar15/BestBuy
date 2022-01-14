@@ -50,7 +50,7 @@
                 {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
                   <div class="checkbox"><i class="ion-android-done"></i></div>
-                  <div class="label" data-value="Laptops">
+                  <div class="label" data-value="{{ cat }}">
                     <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
                   </div>
                   <input type="checkbox" name="checkbox" value="">
@@ -215,6 +215,7 @@
                 
               </div>
             </div>
+            {% endfor %}
         
             
             <!-- Included Pagination -->
