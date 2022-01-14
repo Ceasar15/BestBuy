@@ -27,7 +27,8 @@
           </label>
           
           {% for u in uniq %}
-          <label class="btn btn-default btn-xs">
+          {% comment %} <label {% if request.path == '/business/' %}class="btn btn-default btn-xs active"{% endif %}> {% endcomment %}
+            <label class="btn btn-default btn-xs">
             <a href="{% url 'product_list_by_tag' u|lower %}">{{ u }}</a> 
           </label>          
           {% if not forloop.last %} {% endif %}
@@ -54,7 +55,6 @@
                   {% endif %}                
                   <div class="label" data-value="{{ cat }}">
                     &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
-                    
                   </div>
                 </div>
                 {% endfor %}
