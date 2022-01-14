@@ -89,7 +89,7 @@ def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=N
         queryset = queryset.order_by('price')
         
     if price_descend:
-        queryset = queryset.order_by('price')
+        queryset = queryset.order_by('-price')
 
     paginator = Paginator(queryset, 9)
     page = request.GET.get('page')
