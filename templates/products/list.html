@@ -50,12 +50,13 @@
                 {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
                   {% if cat in request.get_full_path%}
-                  <input type="checkbox" name="checkbox"  value="" disabled>
+                  <input class="checkbox" type="checkbox" name="checkbox"  value="" disabled>
                   {% else %} 
-                  <input type="checkbox" name="checkbox" checked  value="" disabled>
+                  <input class="checkbox" type="checkbox" name="checkbox" checked  value="" disabled>
                   {% endif %}
 
-
+                  <input class="checkbox" type="checkbox" name="checkbox" checked  value="" disabled>
+                  
                   <div class="label" data-value="{{ cat }}">
                     <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
                     
