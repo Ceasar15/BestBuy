@@ -49,11 +49,17 @@
               <div class="controls">
                 {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
-                  <div class="checkbox"><i class="ion-android-done"></i></div>
+                  {% if cat in request.get_full_path%}
+                  <input type="checkbox" name="checkbox"  value="" disabled>
+                  {% else %} 
+                  <input type="checkbox" name="checkbox" checked  value="" disabled>
+                  {% endif %}
+
+
                   <div class="label" data-value="{{ cat }}">
                     <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                    
                   </div>
-                  <input type="checkbox" name="checkbox" value="">
                 </div>
                 {% endfor %}
 
@@ -217,7 +223,10 @@
             </div>
             {% endfor %}
         
-            
+
+<p>URL of this page: {{ request.get_full_path }}</p>
+<input type="checkbox" name="checkbox" checked  value="" disabled>
+           
             <!-- Included Pagination -->
             <nav>            
                 <ul class="pagination">
