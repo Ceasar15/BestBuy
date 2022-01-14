@@ -134,66 +134,21 @@
                   <h1 class="h4">Manufacturer</h1>
               </div>
               
-              {% for cat in filt %}
+              
+
+              <div class="controls">
+                {% for manu in manufacturer %}
               <div class="checkbox-group" data-status="inactive">
-                {% if cat in request.get_full_path%}
+                {% if manu in request.get_full_path%}
                 &nbsp;&nbsp;&nbsp;<i class="ion-android-done"></i>
                 {% else %}
                 {% endif %}                
-                <div class="label" data-value="{{ cat }}">
-                  &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                <div class="label" data-value="{{ manu }}">
+                  &nbsp;&nbsp; <a href="{% url 'product_list_by_manufacturer_filter' manu %}">{{ manu }}</a> 
                 </div>
               </div>
               {% endfor %}
 
-              <div class="controls">
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Hp">Hp</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="ASUS">ASUS</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Acer">Acer</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Dell">Dell</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Sony">Sony</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Apple">Apple</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Lenovo">Lenovo</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Microsoft">Microsoft</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
               </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=N
     manu_filt = []
     for manu in manu_filters:
         manu_filt.append(manu)
-    filt = Counter(manu_filt)
+    manufacturer = Counter(manu_filt)
 
     tag = None
     if tag_slug:
@@ -84,9 +84,13 @@ def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=N
 
     if cat_filter:
         queryset = queryset.category_filter(cat_filter)
+    # print(manu_filter)
+    # queryset = queryset.manufacturer_filter('Samsung')
+    # print("manu queries", queryset)
 
-    if cat_filter:
-        queryset = queryset.category_filter(cat_filter)
+    if manu_filter:
+        queryset = queryset.manufacturer_filter(manu_filter)
+        print("manu queries", queryset)
 
     if name_ascend:
         queryset = queryset.order_by('title')
@@ -116,6 +120,7 @@ def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=N
         'page': page,
         'uniq': uniq,
         'filt': filt,
+        'manufacturer': manufacturer
 
     }
     return render(request, "products/list.html", context)

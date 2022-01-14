@@ -45,6 +45,10 @@ class ProductQuerySet(models.query.QuerySet):
     
     def category_filter(self, query):
         return self.filter(category=query)
+    
+    def manufacturer_filter(self, query):
+        return self.filter(manufacturer=query)
+
         
 class ProductManager(models.Manager):
     def get_queryset(self):
@@ -67,6 +71,10 @@ class ProductManager(models.Manager):
 
     def category_filter(self, query):
         return self.filter(category=query)
+
+    def manufacturer_filter(self, query):
+        return self.filter(manufacturer=query)
+
 
 
 Laptops= 'Laptops'
