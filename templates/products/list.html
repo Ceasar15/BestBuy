@@ -45,24 +45,20 @@
                   <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
                   <h1 class="h4">Type</h1>
               </div>
-
               <div class="controls">
                 {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
                   {% if cat in request.get_full_path%}
-                  <input class="checkbox" type="checkbox" name="checkbox"  value="" disabled>
-                  {% else %} 
-                  <input class="checkbox" type="checkbox" name="checkbox" checked  value="" disabled>
-                  {% endif %}
-
-                  <input class="checkbox" type="checkbox" name="checkbox" checked  value="" disabled>
-                  
+                  &nbsp;&nbsp;&nbsp;<i class="ion-android-done"></i>
+                  {% else %}
+                  {% endif %}                
                   <div class="label" data-value="{{ cat }}">
-                    <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                    &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
                     
                   </div>
                 </div>
                 {% endfor %}
+
 
                 {% comment %} <div class="checkbox-group" data-status="inactive">
                     <div class="checkbox"><i class="ion-android-done"></i></div>
@@ -71,7 +67,6 @@
                 </div> {% endcomment %}
               </div>
           </div>
-
           <br>
 
           <div class="item">
