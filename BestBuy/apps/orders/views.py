@@ -36,7 +36,7 @@ def order_create(request):
                     'order': order,
                 }
                 # Lauch asynchronous task
-                # order_created.delay(order.id)
+                order_created.delay(order.id)
                 return render(request, template, context)
     else:
         form = OrderCreateForm()
