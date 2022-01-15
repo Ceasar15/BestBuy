@@ -18,6 +18,10 @@ def admin_order_detail(request, order_id):
 
 def order_create(request):
     cart = Cart(request)
+    print(cart)
+    for c in cart:
+        print(c)
+    print(dir(cart))
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
