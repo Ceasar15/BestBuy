@@ -54,7 +54,7 @@
                     <a href="#addaddress" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                       Add new address
                     </a>
-                    <form action="" id="forms" method="post" enctype="multipart/form-data">
+                    <form action="{% url 'orders:order_create' %}" id="checkout_form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <hr class="offset-sm">
                         <div class="collapse" id="collapseExample">
@@ -106,7 +106,7 @@
                                                 <li data-value="British Indian Ocean Territory">British Indian Ocean Territory</li>
                                                 <li data-value="Brunei Darussalam">Brunei Darussalam</li>
                                                 <li data-value="Bulgaria">Bulgaria</li>
-                                                <li data-value="Burkina Faso">Burkina Faso</li>
+                                                checkout-form             <li data-value="Burkina Faso">Burkina Faso</li>
                                                 <li data-value="Burundi">Burundi</li>
                                                 <li data-value="Cambodia">Cambodia</li>
                                                 <li data-value="Cameroon">Cameroon</li>
@@ -577,10 +577,17 @@
          ]
       },
       callback: function(response){
-        ref = response.reference
-        document.getElementById("forms").submit();
-        alert('Transaction was successful. Reference: ' + response.reference);
         
+        ref = response.reference
+        document.getElementById("checkout_form").submit();
+
+
+        
+        pay_form = document.getElementById("checkout_form").submit();
+        console.log("pay form", pay_form)
+        
+        console.log("it didnt work")
+        alert('Transaction was successful. Reference: ' + response.reference);
       },
       onClose: function(){
           alert('Transaction Cancelled!');
