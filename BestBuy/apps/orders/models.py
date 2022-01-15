@@ -21,7 +21,6 @@ class Order(models.Model):
     paid = models.BooleanField(default=False)
     coupon = models.ForeignKey(Coupon, null=True, blank=True, related_name='orders', on_delete=models.CASCADE)
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
-    product = models.ForeignKey(Product, related_name='product_order', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-created',)
