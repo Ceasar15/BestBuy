@@ -6,6 +6,8 @@ from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 import os
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "BestBuy.settings")
+
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
@@ -52,8 +54,7 @@ DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     
-    # tagging functionality
-    'taggit',
+
 )
 
 THIRD_PARTY_APPS = (
@@ -65,12 +66,18 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
+    # 'cart.apps.CartConfig',
+    # 'coupons.apps.CouponConfig',
+    # 'orders.apps.OrdersConfig',
+    # 'products.apps.ProductsConfig',
+    # 'users.apps.UsersConfig',
     'apps.users',
-#    'apps.products.ProductsConfig',
     'apps.products',
     'apps.cart',
     'apps.orders',
     'apps.coupons',
+    # tagging functionality
+    'taggit',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

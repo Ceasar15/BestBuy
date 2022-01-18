@@ -10,6 +10,8 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "BestBuy.settings")
+
 
 #     dotenv.load_dotenv(dotenv_file)
 
