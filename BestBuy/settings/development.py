@@ -27,8 +27,15 @@ TEMPLATE_DEBUG = DEBUG
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_TIMEOUT = 5
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_TIMEOUT = 5
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='ceasarkwadwo@gmail.com'
+EMAIL_HOST_PASSWORD='Edem12345'
+EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL='ceasarkwadwo@gmail.com'
 ########## END EMAIL CONFIGURATION
 
 # Database

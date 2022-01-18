@@ -292,12 +292,3 @@ TAGGIT_CASE_INSENSITIVE = True
 
 
 #django_heroku.settings(locals())
-
-
-## CELERY CONFIGURATIONS
-# broker_url = 'redis://localhost:5672/0'
-# broker_pool_url = None
-# result_backend = "redis://127.0.0.1:5672/0"
-# CELERY_BROKER_URL = "redis://127.0.0.1:5672"
-# imports = ('app.apps.Marketplace.tasks',)
-# CELERY_RESULT_BACKEND = "django-db"
