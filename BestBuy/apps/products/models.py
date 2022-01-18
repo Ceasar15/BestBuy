@@ -38,10 +38,18 @@ class ProductQuerySet(models.query.QuerySet):
     def search(self, query):
         lookups = (Q(title__icontains=query) | 
                   Q(description__icontains=query) |
-                  Q(price__icontains=query))
+                  Q(price__icontains=query) | 
+                  Q(category__icontains=query))
+
         return self.filter(lookups).distinct()
+    
+    def category_filter(self, query):
+        return self.filter(category=query)
+    
+    def manufacturer_filter(self, query):
+        return self.filter(manufacturer=query)
 
-
+        
 class ProductManager(models.Manager):
     def get_queryset(self):
         return ProductQuerySet(self.model, using=self._db)
@@ -60,7 +68,14 @@ class ProductManager(models.Manager):
 
     def search(self, query):
         return self.get_queryset().active().search(query)
-    
+
+    def category_filter(self, query):
+        return self.filter(category=query)
+
+    def manufacturer_filter(self, query):
+        return self.filter(manufacturer=query)
+
+
 
 Laptops= 'Laptops'
 Tablets = 'Tablets'

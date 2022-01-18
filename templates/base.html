@@ -124,35 +124,32 @@
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="{% url 'products_list' %}">Catalog</a></li>
-              <li><a href="./blog/">Blog</a></li>
-              <li><a href="{% url 'products_gallery' %}">Gallery</a></li>
+              <li {% if request.get_full_path == '/' %} class="active" {% endif %} ><a href="{% url 'home' %}">Home</a></li>
+              <li {% if request.get_full_path == '/products/products/' %} class="active" {% endif %}  ><a href="{% url 'products_list' %}">Catalog</a></li>
+              <li><a href="#">Blog</a></li>
+              <li {% if 'gallery' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'products_gallery' %}">Gallery</a></li>
               <li class="dropdown">
                 <a href="./catalog/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{% url 'products_list' %}">Product</a></li>
-                  <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
-                  <li><a href="{% url 'orders:order_create' %}">Checkout</a></li>
-                  <li><a href="{% url 'faq' %}">FAQ</a></li>
-                  <li><a href="{% url 'contact' %}">Contacts</a></li>
+                  <li {% if 'products' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'products_list' %}">Product</a></li>
+                  <li {% if 'cart' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
+                  <li {% if 'create' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'orders:order_create' %}">Checkout</a></li>
+                  <li {% if 'faq' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'faq' %}">FAQ</a></li>
+                  <li {% if 'contact' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'contact' %}">Contacts</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Variations</li>
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="./blog/item-photo.html">Article Photo</a></li>
-                  <li><a href="./blog/item-video.html">Article Video</a></li>
-                  <li><a href="./blog/item-review.html">Article Review</a></li>
+                  <li {% if request.get_full_path == '/' %} class="active" {% endif %} ><a href="{% url 'home' %}">Home</a></li>
                 </ul>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-              <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
+              <li {% if 'cart' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
               <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-heart"></i> WishList </a></li>
               <li><a href="{% url 'logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
               {% else %}
-              <li><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
-              <li><a href="{% url 'sign_up' %}"><i class="ion-man"></i> Sign Up</a></li> 
+              <li {% if 'login' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
+              <li {% if 'sign_up' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'sign_up' %}"><i class="ion-man"></i> Sign Up</a></li> 
               {% endif %}
             </ul>
           </div><!--/.nav-collapse -->
@@ -460,5 +457,7 @@
 
     <script src="{% static 'js/jquery-ui-1.11.4.js' %}"></script>
     <script src="{% static 'js/ui.touch-punch.js' %}"></script>
+{% block scripts %}
+{% endblock scripts %}
   </body>
 </html>

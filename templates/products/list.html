@@ -14,10 +14,10 @@
             <i class="ion-arrow-down-b"></i> Sorting by name
           </button>
           <ul class="dropdown-menu">
-            <li class="active"><a href="#"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
-            <li><a href="#"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
-            <li><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
-            <li><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
+            <li class="active"><a href="{% url 'products_list_by_name_ascend' True %}"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
+            <li><a href="{% url 'products_list_by_name_descend' True %}"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
+            <li><a href="{% url 'products_list_by_price_ascend' True %}"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
+            <li><a href="{% url 'products_list_by_price_descend' True %}"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
           </ul>
         </div>
         <p>Search by tags</p>
@@ -25,15 +25,14 @@
           <label class="btn btn-default btn-xs active">
             <a href="{% url 'products_list' %}">All Products</a>
           </label>
-          {% for obj in object_list %}
-            
-            {% for tag in obj.tags.all  %}
-          <label class="btn btn-default btn-xs">
-            <a href="{% url 'product_list_by_tag' tag.slug %}">{{ tag.name }}</a> 
+          
+          {% for u in uniq %}
+          {% comment %} <label {% if request.path == '/business/' %}class="btn btn-default btn-xs active"{% endif %}> {% endcomment %}
+            <label class="btn btn-default btn-xs">
+            <a href="{% url 'product_list_by_tag' u|lower %}">{{ u }}</a> 
           </label>          
-          {% if not forloop.last %}, {% endif %}
+          {% if not forloop.last %} {% endif %}
             {% endfor %}
-          {% endfor %}
         </div>
     </div>
 
@@ -47,28 +46,20 @@
                   <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
                   <h1 class="h4">Type</h1>
               </div>
-
               <div class="controls">
+                {% for cat in filt %}
                 <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Laptops">Laptops</div>
-                    <input type="checkbox" name="checkbox" value="">
+                  {% if cat in request.get_full_path%}
+                  &nbsp;&nbsp;&nbsp;<i class="ion-android-done"></i>
+                  {% else %}
+                  {% endif %}                
+                  <div class="label" data-value="{{ cat }}">
+                    &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                  </div>
                 </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Tablets">Tablets</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Hybrid">Hybrids</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
+                {% endfor %}
               </div>
           </div>
-
           <br>
 
           <div class="item">
@@ -129,6 +120,7 @@
             <div class="controls">
                 <br>
                 <div id="slider-price"></div>
+                <input type="text" name="min_price" maxlength="4" size="3" >
                 <br>
                 <p id="amount"></p>
             </div>
@@ -141,55 +133,22 @@
                   <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
                   <h1 class="h4">Manufacturer</h1>
               </div>
+              
+              
 
               <div class="controls">
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="Hp">Hp</div>
-                    <input type="checkbox" name="checkbox" value="">
+                {% for manu in manufacturer %}
+              <div class="checkbox-group" data-status="inactive">
+                {% if manu in request.get_full_path%}
+                &nbsp;&nbsp;&nbsp;<i class="ion-android-done"></i>
+                {% else %}
+                {% endif %}                
+                <div class="label" data-value="{{ manu }}">
+                  &nbsp;&nbsp; <a href="{% url 'product_list_by_manufacturer_filter' manu %}">{{ manu }}</a> 
                 </div>
+              </div>
+              {% endfor %}
 
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                    <div class="label" data-value="ASUS">ASUS</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Acer">Acer</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Dell">Dell</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Sony">Sony</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Apple">Apple</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Lenovo">Lenovo</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
-
-                <div class="checkbox-group" data-status="inactive">
-                    <div class="checkbox"><i class="ion-android-done"></i></div>
-                     <div class="label" data-value="Microsoft">Microsoft</div>
-                    <input type="checkbox" name="checkbox" value="">
-                </div>
               </div>
           </div>
         </div>
@@ -204,7 +163,7 @@
               <a href='{{ obj.get_absolute_url }}'> <img src="{{ obj.image.url }}" alt="{{ obj.slug }}"/></a>
     
               <div class="content">
-                <a href ='{{ obj.get_absolute_url }}' ><h1 class="h4">{{ obj.title }}</h1></a>
+                <h1 class="h4">{{ obj.title }}</h1>
                 <p class="price">${{ obj.price }}</p>
                 <label>{{obj.category}}</label>
 
@@ -212,13 +171,15 @@
                 <form action="{% url 'cart:cart_add' obj.id %}" method="post">
                   {% csrf_token %}
                   {{ cart_product_form }}
+                  
                   <input class="btn btn-primary btn-rounded btn-sm" type="submit" value="Add to Cart">
                 </form>
                 
               </div>
             </div>
             {% endfor %}
-            
+        
+           
             <!-- Included Pagination -->
             <nav>            
                 <ul class="pagination">

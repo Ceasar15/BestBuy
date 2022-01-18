@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage
 
+from collections import Counter
 
 from taggit.models import Tag
 
@@ -15,7 +16,15 @@ from apps.cart.forms import CartAddProductForm
 
 def home(request):
     template = 'home.html'
-    return render(request, template)
+    cart_product_form = CartAddProductForm()
+    queryset = Product.objects.all().order_by('-created_on').active()
+
+    context = {
+        'object_list': queryset,
+        'cart_product_form': cart_product_form,
+    }
+    return render(request, template, context)
+
 
 def contact(request):
     template = 'contact.html'
@@ -45,39 +54,56 @@ class ProductFeaturedDetailView(DetailView):
     queryset = Product.objects.all().featured()
     template_name = "products/featured-detail.html"
 
-    # def get_queryset(self, *args, **kwargs):
-    #     request = self.request
-    #     return Product.objects.featured()
 
-
-
-# class ProductListView(ListView):
-#     template_name = "products/list.html"
-#     paginate_by = 3
-#     # def get_context_data(self, *args, **kwargs):
-#     #     context = super(ProductListView, self).get_context_data(*args, **kwargs)
-#     #     print(context)
-#     #     return context
-
-    
-
-
-#     def get_queryset(self, *args, **kwargs):
-#         request = self.request
-#         return Product.objects.all()
-
-#
-# DSFMDOFMDSF DFSDMFISDMFSD FSDKF MSDFMOSDF SDFSMDFOMS
-
-def product_list_view(request, tag_slug=None):
+def product_list_view(request, cat_filter=None, name_ascend=None, name_descend=None, price_ascend=None, price_descend=None, manu_filter=None, tag_slug=None):
     queryset = Product.objects.all().order_by('-created_on')
     cart_product_form = CartAddProductForm()
-    
+    tagv = [] 
+    for all_tags in queryset:
+        for each_tag in all_tags.tags.order_by('name'):
+            tagv.append(each_tag)
+    uniq =  Counter(tagv)
+
+
+    cat_filters = Product.objects.values_list('category', flat='true')
+    cat_filt = []
+    for cat in cat_filters:
+        cat_filt.append(cat)
+    filt = Counter(cat_filt)
+
+    manu_filters = Product.objects.values_list('manufacturer', flat='true')
+    manu_filt = []
+    for manu in manu_filters:
+        manu_filt.append(manu)
+    manufacturer = Counter(manu_filt)
+
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        queryset = queryset.filter(tags__in=[tag])
-    
+        queryset = queryset.filter(tags__name__in=[tag]).distinct()
+
+    if cat_filter:
+        queryset = queryset.category_filter(cat_filter)
+    # print(manu_filter)
+    # queryset = queryset.manufacturer_filter('Samsung')
+    # print("manu queries", queryset)
+
+    if manu_filter:
+        queryset = queryset.manufacturer_filter(manu_filter)
+        print("manu queries", queryset)
+
+    if name_ascend:
+        queryset = queryset.order_by('title')
+
+    if name_descend:
+        queryset = queryset.order_by('-title')
+
+    if price_ascend:
+        queryset = queryset.order_by('price')
+        
+    if price_descend:
+        queryset = queryset.order_by('-price')
+
     paginator = Paginator(queryset, 9)
     page = request.GET.get('page')
     try:
@@ -86,11 +112,16 @@ def product_list_view(request, tag_slug=None):
         queryset = paginator.page(1)
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
+    
     context = {
         'object_list': queryset,
         'cart_product_form': cart_product_form,
         'tag': tag,
         'page': page,
+        'uniq': uniq,
+        'filt': filt,
+        'manufacturer': manufacturer
+
     }
     return render(request, "products/list.html", context)
 
@@ -124,34 +155,6 @@ class ProductDetailSlugView(DetailView):
             raise Http404("Uhhmmm ")
         return instance
 
-
- 
-
-# class ProductDetailView(DetailView):
-#     queryset = Product.objects.all()
-#     template_name = "products/detail.html"
-
-#     def get_context_data(self, *args, **kwargs):
-#         context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
-#         print(context)
-#         # context['abc'] = 123
-#         return context
-
-#     def get_object(self, *args, **kwargs):
-#         request = self.request
-#         pk = self.kwargs.get('pk')
-#         instance = Product.objects.get_by_id(pk)
-#         if instance is None:
-#             raise Http404("Product doesn't exist")
-#         return instance
-
-#     # def get_queryset(self, *args, **kwargs):
-#     #     request = self.request
-#     #     pk = self.kwargs.get('pk')
-#     #     return Product.objects.filter(pk=pk)
-#     def get_queryset(self, *args, **kwargs):
-#         request = self.request
-#         return Product.objects.all()
 
 def product_detail_view(request, slug, *args, **kwargs):
     queryset = Product.objects.all()

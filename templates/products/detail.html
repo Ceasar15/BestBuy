@@ -110,11 +110,16 @@
              <h2>Product specifications</h2>
              <br>
 
+             <div class="row specification">
+              <div class="col-sm-6"> <label>Manufacturer</label> </div>
+              <div class="col-sm-6"> <p>{{ object.manufacturer}}™</p> </div>
+            </div>
+
               <div class="row specification">
                 <div class="col-sm-6"> <label>Operating system</label> </div>
                 <div class="col-sm-6"> <p>{{ object.operating_system}}™</p> </div>
-              </div>
-              
+              </div>              
+
               <div class="row specification">
                 <div class="col-sm-6"> <label>Processor</label> </div>
                 <div class="col-sm-6"> <p>{{ object.processor}}</p> </div>
@@ -214,13 +219,13 @@
               {% for sim in similar_products %} 
               <div class="col-sm-6 col-md-3 product">
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                <a href='{{ sim.get_absolute_url }}'><img src="{{ sim.image.url }}" alt="HP {{ sim.slug }}"/></a>
+                <a href="{% url 'product_list_detail' sim.id sim.slug %}"><img src="{{ sim.image.url }}" alt="HP {{ sim.slug }}"/></a>
 
                 <div class="content">
-                  <a href="{{ sim.get_absolute_url }}"><h1 class="h4">{{ sim.title }}</h1></a> 
+                  <h1 class="h4">{{ sim.title }}</h1> 
                   <p class="price">$ {{sim.price}}</p>
                   <label>{{ sim.category }}</label>
-                  <a href="{{ sim.get_absolute_url }}" class="btn btn-link"> Details</a>
+                  <a href="{% url 'product_list_detail' sim.id sim.slug %}" class="btn btn-link"> Details</a>
                   <!-- <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button> -->
                   <form action="{% url 'cart:cart_add' sim.id %}" method="post">
                   {% csrf_token %}

@@ -54,7 +54,7 @@
                     <a href="#addaddress" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                       Add new address
                     </a>
-                    <form action="" method="post">
+                    <form action="{% url 'orders:order_create' %}" id="checkout_form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <hr class="offset-sm">
                         <div class="collapse" id="collapseExample">
@@ -66,7 +66,7 @@
                                         <!-- <input type="text" class="form-control" name="country" value="" required="" placeholder="" /> -->
 
                                         <div class="group-select justify" tabindex='1'>
-                                                <input class="form-control select" type="text" name="country" value="United Kingdom" maxlength="250" required id="id_country" placeholder="Country" />
+                                                <input class="form-control select" type="text" name="country" value="Ghana" maxlength="250" required id="id_country" placeholder="Country" />
                                             <!-- <input class="form-control select" id="country" name="country" value="United Kingdom" placeholder="" required="" /> -->
 
                                             <ul class="dropdown">
@@ -335,42 +335,42 @@
                                         <div class="col-sm-4">
                                             <p>First Name</p>
 
-                                            <input type="text" class="form-control input-sm" name="first_name" value="" maxlength="50" required id="id_first_name" placeholder="" />
+                                            <input type="text" class="form-control input-sm" name="first_name" value="" maxlength="50"  id="id_first_name" required placeholder="" />
                                         </div>
                                         <div class="col-sm-4">
                                             <p>Last Name</p>
         
-                                            <input type="text" class="form-control input-sm" name="last_name" value="" maxlength="50" required id="id_last_name" placeholder="" />
+                                            <input type="text" class="form-control input-sm" name="last_name" value="" maxlength="50"  id="id_last_name" required placeholder="" />
                                         </div>
                                         <div class="col-sm-4">
                                             <hr class="offset-sm visible-xs">
                                             <p>Email</p>
         
-                                            <input type="email" class="form-control input-sm" name="email" value="" maxlength="254" required id="id_email" placeholder="" />
+                                            <input type="email" class="form-control input-sm" name="email" value="" maxlength="254"  id="id_email" required placeholder="" />
                                         </div>
                                     <div class="col-sm-4">
                                         
                                         <p>City</p>
 
-                                        <input type="text" class="form-control input-sm" name="city" value="" maxlength="50" required id="id_city" required="" placeholder="" />
+                                        <input type="text" class="form-control input-sm" name="city" value="" maxlength="50"  id="id_city" required placeholder="" />
                                     </div>
                                     <div class="col-sm-4">
                                         <hr class="offset-sm visible-xs">
                                         <p>Street</p>
 
-                                        <input type="text" class="form-control input-sm" name="street" value="" maxlength="50" required id="id_street" placeholder="" />
+                                        <input type="text" class="form-control input-sm" name="street" value="" maxlength="50"  id="id_street" required placeholder="" />
                                     </div>
                                     <div class="col-sm-2">
                                         <hr class="offset-sm visible-xs">
                                         <p>Building</p>
 
-                                        <input type="text" class="form-control input-sm" name="building" value="" maxlength="50" required id="id_building" placeholder="" />
+                                        <input type="text" class="form-control input-sm" name="building" value="" maxlength="50"  id="id_building" required placeholder="" />
                                     </div>
                                     <div class="col-sm-2">
                                         <hr class="offset-sm visible-xs">
                                         <p>Postal Code</p>
 
-                                        <input type="text" class="form-control input-sm" name="postal_code" maxlength="3" required id="id_postal_code" placeholder="" />
+                                        <input type="text" class="form-control input-sm" name="postal_code" maxlength="3"  id="id_postal_code" required placeholder="" />
                                     </div>
                                     </div>
                                 </div>
@@ -529,13 +529,17 @@
                             <h3 class="no-margin">Total sum</h3>
                         </div>
                         <div class="col-xs-6">
-                            <h3 class="no-margin">${{ cart.get_total_price_after_discount|floatformat:2 }}</h3>
+                            <h3 class="no-margin" id="amount" >${{ cart.get_total_price_after_discount|floatformat:2 }}</h3>
                         </div>
                     </div>
                 </div>
                 <hr class="offset-md">
                     <!-- <p><i class="ion-compose"></i>&nbsp;&nbsp;<input class="btn btn-primary btn-lg justify" type="submit" value="Place Order"></p> -->
-                    <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button>
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                    <button class="btn btn-primary btn-lg justify" type="button" onclick="payWithPaystack()">
+                        <i class="ion-compose"></i>
+                        &nbsp;&nbsp; Confirm order
+                    </button>
             </form>
 
               <!-- <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button> -->
@@ -547,5 +551,52 @@
 <hr class="offset-lg">
 <hr class="offset-lg">
 
+{% block scripts %}
+<script>
+  function payWithPaystack(){
+
+      var fullname = document.getElementById("id_first_name").value;
+      var email = document.getElementById("id_email").value;
+      var priceNum = document.getElementById("amount").innerText;
+      var amount = parseFloat(priceNum.substring(1));
+
+      var handler = PaystackPop.setup({
+        key: 'pk_test_c67af25f5c63f4500477a93ce4ca5221e5a758a3',
+        {% comment %} pk_live_6fd88f7a7e79d8ce558178692fab1f5e37293c5f {% endcomment %}
+        email: email,
+        amount: amount * 100,
+        currency: "GHS",
+        ref: ''+Math.floor((Math.random() * 10000000000) + 1), 
+        metadata: {
+            custom_fields: [
+            {
+                display_name: "Email",
+                variable_name: "email",
+                value: email
+            }
+         ]
+      },
+      callback: function(response){
+        
+        ref = response.reference
+        document.getElementById("checkout_form").submit();
+
+
+        
+        pay_form = document.getElementById("checkout_form").submit();
+        console.log("pay form", pay_form)
+        
+        console.log("it didnt work")
+        alert('Transaction was successful. Reference: ' + response.reference);
+      },
+      onClose: function(){
+          alert('Transaction Cancelled!');
+      }
+    });
+    handler.openIframe();
+  }
+  {% comment %} window.onload = payWithPaystack() {% endcomment %}
+</script>
+{% endblock scripts %}
 
 {% endblock body%}

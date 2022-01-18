@@ -1,6 +1,6 @@
 <html>
     <body>
-        <h1>My Shop</h1>
+        <h1>BestShop Inc.</h1>
         <p>
             Invoice no. {{ order.id }}</br>
             <span class="secondary">
@@ -27,14 +27,14 @@
             <tbody>
                 {% for item in order.items.all %}
                     <tr class="row{% cycle "1" "2" %}">
-                        <td>{{ item.name }}</td>
+                        <td>{{ item.product }}</td>
                         <td class="num">${{ item.price }}</td>
                         <td class="num">{{ item.quantity }}</td>
                         <td class="num">${{ item.get_cost }}</td>
                     </tr>
                 {% endfor %}
                 <tr class="total">
-                    <td colspan="3">Total</td>
+                    <td colspan="3">Total after Discount&/Coupon</td>
                     <td class="num">${{ order.get_total_cost }}</td>
                 </tr>
             </tbody>
