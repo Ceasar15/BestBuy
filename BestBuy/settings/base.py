@@ -71,7 +71,7 @@ LOCAL_APPS = (
     # 'orders.apps.OrdersConfig',
     # 'products.apps.ProductsConfig',
     # 'users.apps.UsersConfig',
-    'apps.users',
+    'apps.users.apps.UsersConfig',
     'apps.products',
     'apps.cart',
     'apps.orders',
