@@ -146,7 +146,7 @@
               {% if user.is_authenticated %}
               <li {% if 'cart' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-ios-cart"></i> Cart </a></li>
               <li><a href="{% url 'cart:cart_detail' %}"> <i class="icon ion-heart"></i> WishList </a></li>
-              <li><a href="{% url 'logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
+              <li><a href="{% url 'users:logout' %}"> <i class="icon ion-log-out"></i> LogOut </a></li>
               {% else %}
               <li {% if 'login' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'users:login' %}"> <i class="ion-android-person"></i> Login </a></li>
               <li {% if 'sign_up' in request.get_full_path %} class="active" {% endif %} ><a href="{% url 'users:sign_up' %}"><i class="ion-man"></i> Sign Up</a></li> 
