@@ -14,22 +14,22 @@
             <i class="ion-arrow-down-b"></i> Sorting by name
           </button>
           <ul class="dropdown-menu">
-            <li class="active"><a href="{% url 'products_list_by_name_ascend' True %}"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
-            <li><a href="{% url 'products_list_by_name_descend' True %}"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
-            <li><a href="{% url 'products_list_by_price_ascend' True %}"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
-            <li><a href="{% url 'products_list_by_price_descend' True %}"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
+            <li class="active"><a href="{% url 'products:products_list_by_name_ascend' True %}"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
+            <li><a href="{% url 'products:products_list_by_name_descend' True %}"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
+            <li><a href="{% url 'products:products_list_by_price_ascend' True %}"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
+            <li><a href="{% url 'products:products_list_by_price_descend' True %}"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
           </ul>
         </div>
         <p>Search by tags</p>
         <div class="btn-group" >
           <label class="btn btn-default btn-xs active">
-            <a href="{% url 'products_list' %}">All Products</a>
+            <a href="{% url 'products:products_list' %}">All Products</a>
           </label>
           
           {% for u in uniq %}
           {% comment %} <label {% if request.path == '/business/' %}class="btn btn-default btn-xs active"{% endif %}> {% endcomment %}
             <label class="btn btn-default btn-xs">
-            <a href="{% url 'product_list_by_tag' u|lower %}">{{ u }}</a> 
+            <a href="{% url 'products:product_list_by_tag' u|lower %}">{{ u }}</a> 
           </label>          
           {% if not forloop.last %} {% endif %}
             {% endfor %}
@@ -54,7 +54,7 @@
                   {% else %}
                   {% endif %}                
                   <div class="label" data-value="{{ cat }}">
-                    &nbsp;&nbsp; <a href="{% url 'product_list_by_filter' cat %}">{{ cat }}</a> 
+                    &nbsp;&nbsp; <a href="{% url 'products:product_list_by_filter' cat %}">{{ cat }}</a> 
                   </div>
                 </div>
                 {% endfor %}
@@ -144,7 +144,7 @@
                 {% else %}
                 {% endif %}                
                 <div class="label" data-value="{{ manu }}">
-                  &nbsp;&nbsp; <a href="{% url 'product_list_by_manufacturer_filter' manu %}">{{ manu }}</a> 
+                  &nbsp;&nbsp; <a href="{% url 'products:product_list_by_manufacturer_filter' manu %}">{{ manu }}</a> 
                 </div>
               </div>
               {% endfor %}
