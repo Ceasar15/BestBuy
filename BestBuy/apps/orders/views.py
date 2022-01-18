@@ -9,7 +9,7 @@ import weasyprint
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from apps.cart.cart import Cart
-from .tasks import order_created
+# from .tasks import order_created
 
 @staff_member_required
 def admin_order_detail(request, order_id):
