@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -11,8 +11,8 @@ urlpatterns = [
     path('cart/', include('apps.cart.urls', namespace='cart')),
     path('orders/', include('apps.orders.urls', namespace='orders') ),
     path('coupons/', include('apps.coupons.urls', namespace='coupons')),
-    url('products/',include('apps.products.urls')),
-    url('users/', include('apps.users.urls')),
+    path('products/',include('apps.products.urls',  namespace='products')),
+    path('users/', include('apps.users.urls', namespace='users')),
     path('', views.home, name='home' ),
     path('contact/', views.contact, name='contact'),
     path('faq/', views.faq, name='faq'),
