@@ -10,7 +10,7 @@ import dj_database_url
 
 
 
-from .database import *
+# from .database import *
 
 ########## DATABASE CONFIGURATION
 #DATABASES = postgresify()
