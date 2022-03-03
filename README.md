@@ -1,6 +1,6 @@
 # BestBuy Ecommerce Project
 
-BestBuy is an e-commerce Python/Django project for a small local business. It has features such as product listings, carts, coupons, place orders and paystack payment.
+BestBuy is an e-commerce Python/Django project for a small local business. It has features such as product listings, carts, coupons, place orders and paystack payment. It was built with Python, Django, PostgreSQL, HTML5, CSS3, Bootstrap4
 
 ## Installation
 
@@ -19,6 +19,12 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
+
+## Preview
+You can access the live application here.
+[Live Preview](https://sellaptop.herokuapp.com/)
+
 
 ## Visuals
 
