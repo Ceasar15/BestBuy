@@ -27,12 +27,11 @@ You can access the live application here.
 
 
 ## Visuals
+![Home Page ](https://user-images.githubusercontent.com/42820626/156563834-814b6563-618e-4c5e-93ff-3a6b609c1ad3.png)
+![Cart Page](https://user-images.githubusercontent.com/42820626/156563856-f4f23fa0-d552-41a9-94e7-bc7004cd2d49.png)
+![Checkout Page](https://user-images.githubusercontent.com/42820626/156563871-c8392b64-6f79-49f6-b906-cd997b9c35f4.png)
+![Gallery Page](https://user-images.githubusercontent.com/42820626/156563903-2d81dbbe-79aa-4894-a917-cdce2e76f5cb.png)
 
-```image 1
-![Screenshot](screenshot.png)
-![plot](./directory_1/directory_2/.../directory_n/plot.png)
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
-```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
