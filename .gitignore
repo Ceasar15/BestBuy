@@ -139,3 +139,11 @@ idea
 vscode
 /.vscode
 /.vscode
+
+### Database ###
+*.accdb
+*.db
+*.dbf
+*.mdb
+*.pdb
+*.sqlite3
