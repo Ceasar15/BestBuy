@@ -66,16 +66,16 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    'apps.cart.apps.CartConfig',
-    'apps.coupons.apps.CouponsConfig',
-    'apps.orders.apps.OrdersConfig',
-    'apps.products.apps.ProductsConfig',
-    'apps.users.apps.UsersConfig',
-    # 'apps.users',
-    # 'apps.products',
-    # 'apps.cart',
-    # 'apps.orders',
-    # 'apps.coupons',
+    # 'apps.cart.apps.CartConfig',
+    # 'apps.coupons.apps.CouponsConfig',
+    # 'apps.orders.apps.OrdersConfig',
+    # 'apps.products.apps.ProductsConfig',
+    # 'apps.users.apps.UsersConfig',
+    'apps.users',
+    'apps.products',
+    'apps.cart',
+    'apps.orders',
+    'apps.coupons',
     # tagging functionality
     'taggit',
 )
